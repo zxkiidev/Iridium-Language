@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iridium | Documentación Oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4b0082;
+            --bg: #ffffff;
+            --text: #1f2937;
+            --text-secondary: #6b7280;
+            --sidebar-bg: #f9fafb;
+            --border: #eeeeee;
+            --code-bg: #f6f8fa;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- NAV "MITAD DE PÁGINA" CON SOMBRA --- */
+        nav {
+            width: 80%; /* Tu requisito de ancho hasta la mitad/gran parte */
+            max-width: 900px;
+            margin: 25px auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Sombra marcada pero limpia */
+            border: 1px solid var(--border);
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+        }
+
+        .logo strong { color: var(--primary); font-size: 1.1em; }
+        nav a { text-decoration: none; color: var(--text); margin: 0 12px; font-size: 0.9em; font-weight: 500; transition: 0.2s; }
+        nav a:hover { color: var(--primary); }
+
+        .btn-ext { background: var(--primary); color: white !important; padding: 7px 18px; border-radius: 20px; }
+
+        /* --- LAYOUT DE DOCUMENTACIÓN --- */
+        .docs-container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 50px;
+            flex: 1;
+        }
+
+        /* BARRA LATERAL (SIDEBAR) */
+        aside {
+            width: 250px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .side-group { margin-bottom: 30px; }
+        .side-group h4 { 
+            font-size: 0.75em; 
+            text-transform: uppercase; 
+            color: var(--text-secondary); 
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .side-item {
+            display: block;
+            padding: 8px 0;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: 0.2s;
+        }
+
+        .side-item:hover { color: var(--primary); padding-left: 5px; }
+        .side-item.active { color: var(--primary); font-weight: 600; }
+
+        /* ÁREA DE TEXTO (MAIN) */
+        main {
+            flex: 1;
+            padding-bottom: 100px;
+            max-width: 800px;
+        }
+
+        .doc-section { margin-bottom: 70px; scroll-margin-top: 120px; }
+        h1 { font-size: 3.5em; letter-spacing: -2px; margin-bottom: 10px; }
+        h2 { font-size: 2em; margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px; letter-spacing: -0.5px; }
+        
+        p { line-height: 1.7; color: var(--text-secondary); font-size: 1.05em; }
+
+        /* BLOQUES DE CÓDIGO */
+        pre {
+            background: var(--code-bg);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #e1e4e8;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            color: #24292e;
+            position: relative;
+        }
+
+        pre::before {
+            content: "IRIDIUM SOURCE";
+            position: absolute;
+            top: 8px;
+            right: 15px;
+            font-size: 0.65em;
+            color: #999;
+            font-weight: bold;
+        }
+
+        /* --- FOOTER SIEMPRE AL FONDO --- */
+        footer {
+            margin-top: auto;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            background: white;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong>IRIDIUM</strong></div>
+        <div class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="features.html">Features</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language">GitHub</a>
+            <a href="#" class="btn-ext"><i class="fa-solid fa-download"></i> Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>Primeros Pasos</h4>
+                <a href="#instalacion" class="side-item">Instalación</a>
+                <a href="#hola-mundo" class="side-item">Hola Mundo</a>
+            </div>
+            <div class="side-group">
+                <h4>Sintaxis</h4>
+                <a href="#variables" class="side-item">Variables e hilos</a>
+                <a href="#seguridad" class="side-item">Seguridad (Secure)</a>
+                <a href="#operadores" class="side-item">Operadores Especiales</a>
+            </div>
+            <div class="side-group">
+                <h4>Avanzado</h4>
+                <a href="#database" class="side-item">Backend & IA</a>
+            </div>
+        </aside>
+
+        <main>
+            <section id="instalacion" class="doc-section">
+                <h1>Documentación</h1>
+                <p>Aprende a dominar Iridium, el lenguaje diseñado para administrar backends de nueva generación con inteligencia artificial integrada.</p>
+                
+                <h2>Instalación</h2>
+                <p>Para ejecutar archivos <code>.iri</code>, necesitas el motor de ejecución basado en Python 3.10+.</p>
+                <pre><code>// Clona el repositorio oficial
+git clone https://github.com/zxkiidev/Iridium-Language.git
+
+// Ejecuta el motor
+python src/main.py examples/test.iri</code></pre>
+            </section>
+
+            <section id="variables" class="doc-section">
+                <h2>Variables y Tipado</h2>
+                <p>Iridium permite un tipado híbrido. Puedes ser estricto para asegurar la integridad de la IA o flexible para prototipado rápido.</p>
+                <pre><code>var usuario: string = "Zadquiel"
+var precision: float = 0.98
+const ID_NUCLEO = 77</code></pre>
+            </section>
+
+            <section id="seguridad" class="doc-section">
+                <h2>Seguridad (Secure)</h2>
+                <p>Los bloques <code>secure:</code> cifran visualmente cualquier salida de datos sensibles, ideal para proteger claves de API o contraseñas en el backend.</p>
+                <pre><code>secure:
+    var password = "clave_secreta_77"
+    out "Clave: {password}" // Resultado: ********
+end</code></pre>
+            </section>
+
+            <section id="operadores" class="doc-section">
+                <h2>Operadores de Resiliencia</h2>
+                <p>El operador Sponge <code>~></code> permite que el código no se detenga si una conexión externa falla, asignando un valor de respaldo.</p>
+                <pre><code>// Si la API falla, conexion_ia será 0.0
+var conexion_ia = network.get("api.ia.com") ~> 0.0
+out "Estado: {conexion_ia}"</code></pre>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

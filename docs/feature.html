@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iridium | Características Únicas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4b0082;
+            --bg: #ffffff;
+            --text: #1f2937;
+            --text-secondary: #6b7280;
+            --card-hover: #f3f4f6;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'SF Pro Display', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* --- NAV SIMPLE --- */
+        nav {
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .logo { font-weight: bold; color: var(--primary); text-decoration: none; font-size: 1.2em; }
+        .nav-links a { text-decoration: none; color: var(--text); margin-left: 20px; font-size: 0.9em; transition: 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- HEADER DE SECCIÓN --- */
+        .features-header {
+            text-align: center;
+            padding: 80px 10% 40px;
+        }
+
+        .features-header h1 { font-size: 3.5em; letter-spacing: -2px; margin: 0; }
+        .features-header p { color: var(--text-secondary); font-size: 1.2em; max-width: 600px; margin: 20px auto; }
+
+        /* --- GRID DE CARACTERÍSTICAS --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 10% 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 40px;
+            border-radius: 24px;
+            background: #ffffff;
+            border: 1px solid #f3f4f6;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: var(--card-hover);
+            border-color: var(--primary);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: #f3e8ff;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 { font-size: 1.5em; margin-bottom: 15px; letter-spacing: -0.5px; }
+        .feature-card p { color: var(--text-secondary); font-size: 0.95em; }
+
+        /* --- FOOTER --- */
+        footer { text-align: center; padding: 40px; border-top: 1px solid #f3f4f6; color: var(--text-secondary); font-size: 0.85em; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">IRIDIUM</a>
+        <div class="nav-links">
+            <a href="docs.html">Documentación</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language">GitHub</a>
+        </div>
+    </nav>
+
+    <header class="features-header">
+        <h1>Potencia tu Backend</h1>
+        <p>Iridium combina la simplicidad sintáctica con herramientas nativas de seguridad y manejo de datos a gran escala.</p>
+    </header>
+
+    <main class="features-grid">
+        <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-brain"></i></div>
+            <h3>IA-Native Ready</h3>
+            <p>Diseñado para facilitar la integración de modelos de lenguaje y ciencia de datos directamente en el núcleo del servidor.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Bloques Secure</h3>
+            <p>Protección de variables sensibles en tiempo de ejecución. Evita fugas de datos en logs de consola de forma automática.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-cloud-bolt"></i></div>
+            <h3>Operador Sponge</h3>
+            <p>Gestión de errores y fallos de red simplificada mediante el operador <code>~></code>, asegurando que tu backend nunca se detenga.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-database"></i></div>
+            <h3>Persistencia Híbrida</h3>
+            <p>Administra bases de datos internas y externas con sintaxis nativa, permitiendo que la IA optimice el almacenamiento en tiempo real.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Alta Eficiencia</h3>
+            <p>El motor procesa líneas de código con un impacto mínimo en memoria, ideal para sistemas distribuidos y microservicios.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon-box"><i class="fa-solid fa-terminal"></i></div>
+            <h3>Soporte IDE Oficial</h3>
+            <p>Extensión dedicada para VS Code con resaltado de sintaxis optimizado para una mejor legibilidad del código.</p>
+        </div>
+    </main>
+
+    
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Creado por zxkiidev
+    </footer>
+
+</body>
+</html>
