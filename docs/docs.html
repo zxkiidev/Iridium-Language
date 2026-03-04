@@ -5,146 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iridium | Documentación Oficial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #4b0082;
-            --bg: #ffffff;
-            --text: #1f2937;
-            --text-secondary: #6b7280;
-            --sidebar-bg: #f9fafb;
-            --border: #eeeeee;
-            --code-bg: #f6f8fa;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* --- NAV "MITAD DE PÁGINA" CON SOMBRA --- */
-        nav {
-            width: 80%; /* Tu requisito de ancho hasta la mitad/gran parte */
-            max-width: 900px;
-            margin: 25px auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 12px 30px;
-            border-radius: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Sombra marcada pero limpia */
-            border: 1px solid var(--border);
-            position: sticky;
-            top: 20px;
-            z-index: 1000;
-        }
-
-        .logo strong { color: var(--primary); font-size: 1.1em; }
-        nav a { text-decoration: none; color: var(--text); margin: 0 12px; font-size: 0.9em; font-weight: 500; transition: 0.2s; }
-        nav a:hover { color: var(--primary); }
-
-        .btn-ext { background: var(--primary); color: white !important; padding: 7px 18px; border-radius: 20px; }
-
-        /* --- LAYOUT DE DOCUMENTACIÓN --- */
-        .docs-container {
-            display: flex;
-            width: 90%;
-            max-width: 1200px;
-            margin: 40px auto;
-            gap: 50px;
-            flex: 1;
-        }
-
-        /* BARRA LATERAL (SIDEBAR) */
-        aside {
-            width: 250px;
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-
-        .side-group { margin-bottom: 30px; }
-        .side-group h4 { 
-            font-size: 0.75em; 
-            text-transform: uppercase; 
-            color: var(--text-secondary); 
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .side-item {
-            display: block;
-            padding: 8px 0;
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.95em;
-            transition: 0.2s;
-        }
-
-        .side-item:hover { color: var(--primary); padding-left: 5px; }
-        .side-item.active { color: var(--primary); font-weight: 600; }
-
-        /* ÁREA DE TEXTO (MAIN) */
-        main {
-            flex: 1;
-            padding-bottom: 100px;
-            max-width: 800px;
-        }
-
-        .doc-section { margin-bottom: 70px; scroll-margin-top: 120px; }
-        h1 { font-size: 3.5em; letter-spacing: -2px; margin-bottom: 10px; }
-        h2 { font-size: 2em; margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px; letter-spacing: -0.5px; }
-        
-        p { line-height: 1.7; color: var(--text-secondary); font-size: 1.05em; }
-
-        /* BLOQUES DE CÓDIGO */
-        pre {
-            background: var(--code-bg);
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid #e1e4e8;
-            font-family: 'Fira Code', 'Consolas', monospace;
-            font-size: 0.9em;
-            overflow-x: auto;
-            color: #24292e;
-            position: relative;
-        }
-
-        pre::before {
-            content: "IRIDIUM SOURCE";
-            position: absolute;
-            top: 8px;
-            right: 15px;
-            font-size: 0.65em;
-            color: #999;
-            font-weight: bold;
-        }
-
-        /* --- FOOTER SIEMPRE AL FONDO --- */
-        footer {
-            margin-top: auto;
-            padding: 30px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            background: white;
-            color: var(--text-secondary);
-            font-size: 0.85em;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav>
         <div class="logo"><strong>IRIDIUM</strong></div>
         <div class="menu">
-            <a href="#">Features</a>
+            <a href="feature.html">Features</a>
             <a href="docs.html">Docs</a>
             <a href="downloads.html">Downloads</a>
             <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
