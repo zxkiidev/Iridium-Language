@@ -1,4 +1,4 @@
-/* --- VARIABLES UNIFICADAS --- */
+/* --- VARIABLES UNIFICADAS (Tu paleta original) --- */
 :root {
     --primary: #4b0082;
     --primary-dark: #3c0069;
@@ -22,7 +22,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* --- NAV ESTILO IRIDIUM --- */
+/* --- NAV ESTILO IRIDIUM (El que te gustaba) --- */
 nav {
     width: 80%;
     max-width: 900px;
@@ -45,6 +45,7 @@ nav {
 nav a { text-decoration: none; color: var(--text); margin: 0 12px; font-size: 0.9em; font-weight: 500; transition: 0.2s; }
 nav a:hover { color: var(--primary); }
 
+/* Botón especial en el nav */
 .btn-nav-primary {
     background: var(--primary);
     color: white !important;
@@ -52,20 +53,19 @@ nav a:hover { color: var(--primary); }
     border-radius: 20px;
 }
 
-/* --- ESTRUCTURA Y CONTENIDOS --- */
-.content-wrapper, .content, .download-container {
+/* --- ESTRUCTURA GENERAL --- */
+.content-wrapper {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 60px 20px;
-    text-align: center;
 }
 
-h1 { font-size: 3.5em; letter-spacing: -2px; margin: 0; line-height: 1.1; }
+h1 { font-size: 3.5em; letter-spacing: -2px; margin: 0; }
 .subtitle { color: var(--text-secondary); font-size: 1.2em; margin: 15px 0 40px; }
 
-/* --- HERO (Index) --- */
+/* --- SECCIÓN HERO (Index) --- */
 .hero {
     display: flex;
     align-items: center;
@@ -80,7 +80,7 @@ h1 { font-size: 3.5em; letter-spacing: -2px; margin: 0; line-height: 1.1; }
     -webkit-text-fill-color: transparent;
 }
 
-/* --- FEATURES GRID --- */
+/* --- GRID DE FEATURES --- */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -95,14 +95,14 @@ h1 { font-size: 3.5em; letter-spacing: -2px; margin: 0; line-height: 1.1; }
     background: white;
     border: 1px solid var(--border);
     transition: 0.3s;
-    text-align: left;
 }
 .feature-card:hover {
     transform: translateY(-5px);
+    background: #fcfcfc;
     border-color: var(--primary);
 }
 
-/* --- DOCUMENTACIÓN --- */
+/* --- DOCUMENTACIÓN (Docs) --- */
 .docs-container {
     display: flex;
     width: 90%;
@@ -111,23 +111,21 @@ h1 { font-size: 3.5em; letter-spacing: -2px; margin: 0; line-height: 1.1; }
     gap: 50px;
     text-align: left;
 }
-aside { width: 250px; position: sticky; top: 100px; height: fit-content; flex-shrink: 0; }
+aside { width: 250px; position: sticky; top: 100px; height: fit-content; }
 .side-item { display: block; padding: 8px 0; color: var(--text); text-decoration: none; transition: 0.2s; }
 .side-item:hover { color: var(--primary); padding-left: 5px; }
-
 pre {
     background: #f6f8fa;
     padding: 25px;
     border-radius: 16px;
     border: 1px solid #e1e4e8;
     overflow-x: auto;
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
 }
 
-/* --- BOTONES --- */
-.main-btn, .vsix-btn, .main-download-btn {
+/* --- BOTONES (Descargas / VS Code) --- */
+.main-btn {
+    background: var(--primary);
+    color: white;
     padding: 18px 40px;
     border-radius: 50px;
     text-decoration: none;
@@ -136,63 +134,8 @@ pre {
     align-items: center;
     gap: 12px;
     transition: 0.3s;
-    justify-content: center;
 }
-
-.main-btn, .main-download-btn {
-    background: var(--primary);
-    color: white;
-    box-shadow: 0 15px 30px rgba(75, 0, 130, 0.2);
-}
-
-.vsix-btn { background: #1e1e1e; color: white; border-radius: 12px; }
-
-/* --- EXTENSION & DOWNLOAD EXCLUSIVOS --- */
-.extension-icon {
-    font-size: 80px;
-    color: var(--vscode-blue);
-    margin-bottom: 20px;
-    filter: drop-shadow(0 10px 15px rgba(0, 122, 204, 0.2));
-}
-
-.version-badge {
-    background: #f3e8ff;
-    color: var(--primary);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8em;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.specs {
-    display: flex;
-    gap: 40px;
-    margin-top: 60px;
-    text-align: left;
-    max-width: 800px;
-}
-.spec-item i { color: var(--success); margin-right: 8px; }
-
-.changelog-container, .info-box {
-    margin-top: 80px;
-    width: 100%;
-    max-width: 600px;
-    background: #f9fafb;
-    padding: 40px;
-    border-radius: 24px;
-    border: 1px solid var(--border);
-    box-sizing: border-box;
-}
-
-.changelog-list { list-style: none; padding: 0; }
-.changelog-list li {
-    padding: 12px 0;
-    border-bottom: 1px solid #edf0f2;
-    color: var(--text-secondary);
-    display: flex;
-    gap: 12px;
-}
+.main-btn:hover { transform: translateY(-2px); background: var(--primary-dark); }
 
 /* --- FOOTER --- */
 footer {
@@ -204,31 +147,39 @@ footer {
     margin-top: auto;
 }
 
-/* --- RESPONSIVE / MÓVIL (AQUÍ ESTÁ LA MAGIA) --- */
+/* --- AJUSTES PARA CELULAR (AÑADIDO) --- */
 @media (max-width: 768px) {
     nav {
         width: 90%;
-        padding: 10px 20px;
+        margin: 15px auto;
+        padding: 10px 15px;
         flex-direction: column;
-        border-radius: 20px;
-        gap: 15px;
+        border-radius: 25px;
+        gap: 10px;
+        position: relative;
+        top: 0;
     }
-    
+
     .menu {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 5px;
     }
 
-    nav a { margin: 0 5px; font-size: 0.8em; }
+    nav a { margin: 5px; font-size: 0.8em; }
+    
+    .btn-nav-primary { padding: 5px 12px; }
 
-    h1 { font-size: 2.2em; }
-    .subtitle { font-size: 1em; }
+    h1 { font-size: 2.2em; text-align: center; }
+    .subtitle { font-size: 1em; text-align: center; }
 
+    .hero { padding: 40px 20px; text-align: center; }
+    
     .docs-container {
         flex-direction: column;
-        gap: 30px;
+        width: 95%;
+        gap: 20px;
     }
 
     aside {
@@ -236,26 +187,19 @@ footer {
         position: relative;
         top: 0;
         border-bottom: 1px solid var(--border);
-        padding-bottom: 20px;
+        padding-bottom: 15px;
     }
 
-    .specs {
-        flex-direction: column;
-        gap: 20px;
-        padding: 0 20px;
+    .features-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
     }
 
-    .hero {
-        padding: 40px 5%;
-    }
+    .feature-card { padding: 25px; }
 
-    .main-btn, .main-download-btn, .vsix-btn {
-        width: 90%;
-        padding: 15px 20px;
-    }
-
-    .changelog-container, .info-box {
-        padding: 20px;
-        border-radius: 15px;
+    .main-btn {
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
     }
 }
