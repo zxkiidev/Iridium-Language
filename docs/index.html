@@ -2,50 +2,76 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iridium | VS Code Extension</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Iridium | The Future of Backend & IA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav>
-        <div class="logo"><strong>IRIDIUM</strong></div>
+        <div class="logo"><strong><a href="index.html">IRIDIUM</a></strong></div>
         <div class="menu">
-            <a href="feature.html">Features</a>
             <a href="docs.html">Docs</a>
             <a href="downloads.html">Downloads</a>
             <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
-            <a href="extension.html" class="btn-download"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+            <a href="extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
         </div>
     </nav>
 
-    <main class="content">
-        <div class="extension-icon">
-            <i class="fa-brands fa-microsoft"></i>
+    <main class="content-wrapper">
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Potencia tu <br><span>Backend con IA</span></h1>
+                <p class="subtitle">Iridium combina la simplicidad sintáctica con herramientas nativas de seguridad y manejo de datos a gran escala.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="docs.html" class="main-btn">Empezar ahora <i class="fa-solid fa-rocket"></i></a>
+                    <a href="downloads.html" class="main-btn" style="background: #f3f4f6; color: var(--text); box-shadow: none; border: 1px solid var(--border);">Descargar v1.4.6</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div style="font-size: 2em; color: var(--primary); margin-bottom: 15px;"><i class="fa-solid fa-brain"></i></div>
+                <h3>IA-Native Ready</h3>
+                <p>Diseñado para facilitar la integración de modelos de lenguaje y ciencia de datos directamente en el núcleo del servidor.</p>
+            </div>
+
+            <div class="feature-card">
+                <div style="font-size: 2em; color: var(--primary); margin-bottom: 15px;"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Seguridad Extrema</h3>
+                <p>Usa bloques <code>secure:</code> para proteger información sensible y evitar fugas de datos en los logs del sistema.</p>
+            </div>
+
+            <div class="feature-card">
+                <div style="font-size: 2em; color: var(--primary); margin-bottom: 15px;"><i class="fa-solid fa-bolt"></i></div>
+                <h3>Resiliencia Nativa</h3>
+                <p>Gracias al operador <strong>Sponge (~>)</strong>, tu código sobrevive a fallos de red asignando valores de respaldo automáticamente.</p>
+            </div>
         </div>
-        <h1>Iridium for VS Code</h1>
-        <p class="subtitle">Resaltado de sintaxis profesional y herramientas de desarrollo para Ir.</p>
 
-        <a href="#" class="vsix-btn">
-            <i class="fa-solid fa-file-export"></i>
-            Descargar extensión .VSIX
-        </a>
-
-        <div class="changelog-container">
-            <h2>Últimas actualizaciones <span class="version-tag">v1.4.6</span></h2>
-            <ul class="changelog-list">
-                <li>Soporte mejorado para el operador <strong>Sponge (~>)</strong> con colores distintivos.</li>
-                <li>Detección automática de bloques <strong>secure:</strong> para prevenir fugas de datos visuales.</li>
-                <li>Nuevos snippets para funciones de <strong>IA y Tensores</strong>.</li>
-                <li>Optimización del motor de búsqueda de palabras clave (Keywords) para mayor fluidez.</li>
-                <li>Corrección de colores en el operador <strong>Mirror Log (>> out)</strong>.</li>
-            </ul>
+        <div style="width: 100%; max-width: 800px; margin-top: 80px; text-align: left;">
+            <h2 style="text-align: center; margin-bottom: 30px;">Sintaxis Limpia y Moderna</h2>
+            <pre><code>// Así de fácil es un hilo seguro en Iridium
+thread procesar_datos() {
+    secure:
+        var token = network.get_key()
+        out "Conectando con token: {token}" // Muestra *****
+    end
+    
+    var data = api.fetch() ~> [] // Si falla, devuelve lista vacía
+    out "Procesando {data.length} elementos"
+}</code></pre>
         </div>
     </main>
 
     <footer>
-        &copy; 2026 Iridium Language Project | zxkiidev
+        <div style="margin-bottom: 15px;">
+            <a href="#" style="color: var(--text-secondary); margin: 0 10px;"><i class="fa-brands fa-github"></i></a>
+            <a href="#" style="color: var(--text-secondary); margin: 0 10px;"><i class="fa-brands fa-discord"></i></a>
+        </div>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
     </footer>
 
 </body>
