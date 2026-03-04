@@ -123,18 +123,37 @@ class IridiumEngine:
                 print(f"[Ir-Error]: No se puede reasignar la constante '{nombre_real}'")
                 sys.exit(1)
 
-            valor_raw = linea_stripped.split("~>")[1].strip() if "~>" in linea_stripped else partes_igual[1].strip()
-            valor_raw = valor_raw.replace("true", "True").replace("false", "False")
+            # --- NUEVA LÓGICA: INPUT (await) ---
+            if "await" in partes_igual[1]:
+                # Extraemos el mensaje dentro de las comillas después de await
+                mensaje_match = re.search(r'await\s+"([^"]*)"', partes_igual[1])
+                prompt = mensaje_match.group(1) if mensaje_match else ""
+                
+                # Pausamos el motor para recibir el dato del usuario
+                valor_usuario = input(prompt)
+                
+                # Intentamos convertir a número si es posible, si no, se queda como string
+                try:
+                    if "." in valor_usuario: valor_final = float(valor_usuario)
+                    else: valor_final = int(valor_usuario)
+                except ValueError:
+                    valor_final = valor_usuario
             
-            for v_n in sorted(self.variables.keys(), key=len, reverse=True):
-                if v_n in valor_raw:
-                    valor_raw = valor_raw.replace(v_n, str(self.variables[v_n]))
-            
-            try:
-                valor_final = eval(valor_raw)
-            except:
-                valor_final = valor_raw.strip('"')
+            # --- LÓGICA ORIGINAL (Sponge y eval) ---
+            else:
+                valor_raw = linea_stripped.split("~>")[1].strip() if "~>" in linea_stripped else partes_igual[1].strip()
+                valor_raw = valor_raw.replace("true", "True").replace("false", "False")
+                
+                for v_n in sorted(self.variables.keys(), key=len, reverse=True):
+                    if v_n in valor_raw:
+                        valor_raw = valor_raw.replace(v_n, str(self.variables[v_n]))
+                
+                try:
+                    valor_final = eval(valor_raw)
+                except:
+                    valor_final = valor_raw.strip('"')
 
+            # Validación de tipo (funciona igual para el input)
             if ":" in meta:
                 self.validar_tipo(nombre_real, meta.split(":")[1].strip(), valor_final)
 

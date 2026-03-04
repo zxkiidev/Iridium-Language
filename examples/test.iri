@@ -1,55 +1,11 @@
-// ==========================================
-// TEST INTEGRAL DE IRIDIUM v1.0
-// ==========================================
+// Prueba de entrada de datos en Iridium
+out "--- SISTEMA DE ACCESO ---"
 
-// 1. GESTIÓN DE ENTORNO [cite: 10]
-env of ".env":
-    const API_KEY: string = "AI-77-99" FROM env.file
-    const PORT: int = 8080 FROM env.file
+var nombre: string = await "Ingresa tu nombre: "
+var edad: int = await "Ingresa tu edad: "
 
-// 2. CONSTANTES E INMUTABILIDAD [cite: 16, 17]
-const UMBRAL = 0.85
-const ID_NUCLEO: int = 77
-
-// 3. VARIABLES Y TIPADO HÍBRIDO [cite: 16]
-var usuario = "Zadquiel"
-var precision: float = 0.92
-var intentos: int = 3
-var activa: bool = true
-
-out "--- INICIANDO SISTEMA IRIDIUM ---"
-out "Cargando núcleo {ID_NUCLEO} para el usuario {usuario}..."
-
-// 4. OPERADORES ESPECIALES: Espejo (Mirror Log) [cite: 61]
-precision >> out
-
-// 5. OPERADOR SPONGE (Resiliencia) [cite: 63]
-var conexion_ia = network.get("api.ia.com") ~> 0.77
-out "Estado de conexión (Sponge): {conexion_ia}"
-
-// 6. ESTRUCTURAS DE CONTROL [cite: 22, 28]
-if (precision > UMBRAL):
-    out "SISTEMA ESTABLE: Precisión {precision} supera el umbral de {UMBRAL}"
+if edad >= 18:
+    out "Bienvenido {nombre}, tienes acceso al servidor."
 else:
-    out "ALERTA: Reajustando pesos del modelo..."
-
-// 7. ASIGNACIÓN COMPUESTA [cite: 68, 70]
-intentos++
-precision *= 1.05
-
-// 8. BLOQUE DE SEGURIDAD (Secure) [cite: 83]
-secure:
-    var password = "clave_secreta_77"
-    out "Protegido: {password}"                // Saldrá: Protegido: ********
-    password >> out
-    out "Manual: {password, encrypted: false}" // Saldrá: Manual: clave_secreta_77 [cite: 87]
+    out "Lo siento {nombre}, el acceso requiere ser mayor de edad."
 end
-
-// 9. BUCLE WHILE [cite: 28, 30]
-var energia = 3.0
-while (energia > 0):
-    out "Energía restante: {energia}"
-    energia -= 1.5
-end
-
-out "--- TEST FINALIZADO CON ÉXITO ---"

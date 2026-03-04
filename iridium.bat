@@ -1,2 +1,2 @@
 @echo off
-python "C:\Users\zadqu\Desktop\PAP\IridiumProject\main.py" %1
+python "C:\Users\zadqu\Desktop\PAP\IridiumProject\src\main.py" %*
