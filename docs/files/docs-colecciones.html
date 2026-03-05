@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Colecciones y Datasets | Documentación Iridium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong><a href="../index.html">IRIDIUM</a></strong></div>
+        <div class="menu">
+            <a href="../docs.html">Docs</a>
+            <a href="../downloads.html">Downloads</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
+            <a href="../extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>🟢 El Despegue</h4>
+                <a href="docs-manifiesto.html" class="side-item">Manifiesto Iridium</a>
+                <a href="docs-instalacion.html" class="side-item">Instalación Avanzada</a>
+                <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+                <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+                <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+            </div>
+            
+            <div class="side-group">
+                <h4>🟡 Lógica de Servidor</h4>
+                <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+                <a href="docs-colecciones.html" class="side-item active-item">Colecciones</a>
+                <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+                <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+                <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+            </div>
+
+            <div class="side-group">
+                <h4>🔴 Núcleo e IA</h4>
+                <a href="docs-red.html" class="side-item">Manejo de Red</a>
+                <a href="docs-db.html" class="side-item">Bases de Datos</a>
+                <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+                <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+                <a href="docs-optimizacion.html" class="side-item">Optimización Backend</a>
+            </div>
+
+            <div class="side-group">
+                <h4>📚 Referencia Libs</h4>
+                <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+                <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+                <a href="lib-time.html" class="side-item">Lib-Time</a>
+                <a href="lib-network.html" class="side-item">Lib-Network</a>
+            </div>
+
+            <div class="side-group">
+                <h4>⚙️ Ecosistema</h4>
+                <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+                <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+                <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+                <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="doc-section">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 0.8em;">Nivel 2: Archivo 2</span>
+                <h1>Colecciones y Datasets</h1>
+                
+                <p>Iridium redefine la forma de trabajar con grupos de datos. A diferencia de otros lenguajes, las colecciones en Iridium están optimizadas para el flujo de entrenamiento de modelos de IA.</p>
+
+                <hr style="border: 0.5px solid var(--border); margin: 30px 0;">
+
+                <h2>1. Arreglos Estándar</h2>
+                <p>Se definen utilizando llaves <code>{}</code>. Pueden contener cualquier tipo de dato si se usa <code>var</code>, o tipos específicos si se declara el tipado.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #6a9955;">// Arreglo dinámico</span><br>
+                    <span style="color: #569cd6;">var</span> lista = {<span style="color: #b5cea8;">1</span>, <span style="color: #b5cea8;">2</span>, <span style="color: #ce9178;">"Iridium"</span>, <span style="color: #569cd6;">true</span>}<br><br>
+                    <span style="color: #6a9955;">// Arreglo de tipo estricto</span><br>
+                    <span style="color: #569cd6;">var</span> notas: <span style="color: #4ec9b0;">list[int]</span> = {<span style="color: #b5cea8;">10</span>, <span style="color: #b5cea8;">20</span>, <span style="color: #b5cea8;">30</span>}
+                </div>
+
+                
+
+                <h2>2. El Tipo `dataset` (IA Ready)</h2>
+                <p>El tipo <code>dataset</code> es una estructura inmutable por defecto y altamente comprimida en memoria, diseñada para ser procesada por el núcleo de Ciencia de Datos de Iridium.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">var</span> entrenamiento: <span style="color: #4ec9b0;">dataset</span> = {<span style="color: #b5cea8;">0.11</span>, <span style="color: #b5cea8;">0.77</span>, <span style="color: #b5cea8;">0.56</span>, <span style="color: #b5cea8;">0.89</span>}<br>
+                    <span style="color: #569cd6;">var</span> media = <span style="color: #dcdcaa;">avrg</span>(entrenamiento)<br>
+                    <span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Media del dataset: {media}"</span>
+                </div>
+
+                <h2>3. Rangos Simplificados</h2>
+                <p>Para generar secuencias rápidas (útiles en bucles de entrenamiento), Iridium utiliza la sintaxis de rango nativo <code>[inicio..fin]</code>.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">var</span> epocas = [<span style="color: #b5cea8;">1</span>..<span style="color: #b5cea8;">100</span>]<br>
+                    <span style="color: #6a9955;">// Esto genera automáticamente una colección del 1 al 100</span>
+                </div>
+
+                <div style="margin-top: 40px; padding: 20px; background: rgba(33, 150, 243, 0.1); border-radius: 12px; border: 1px solid #2196f3;">
+                    <h4 style="margin-top: 0; color: #2196f3;"><i class="fa-solid fa-microchip"></i> Rendimiento en IA</h4>
+                    <p style="margin: 0; font-size: 0.9em;">A diferencia de las listas normales, los <code>dataset</code> se cargan directamente en los registros del motor de tensores, permitiendo operaciones matemáticas vectorizadas.</p>
+                </div>
+
+                <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="docs-sponge.html" style="text-decoration: none; color: var(--primary);"><i class="fa-solid fa-arrow-left"></i> Anterior: Operador Sponge</a>
+                    <a href="docs-flujo.html" style="text-decoration: none; color: var(--primary); font-weight: bold;">Siguiente: Control de Flujo <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

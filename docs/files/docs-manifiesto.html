@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Manifiesto Iridium | Documentación Oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong><a href="../index.html">IRIDIUM</a></strong></div>
+        <div class="menu">
+            <a href="../docs.html">Docs</a>
+            <a href="../downloads.html">Downloads</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
+            <a href="../extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>🟢 El Despegue</h4>
+                <a href="docs-manifiesto.html" class="side-item active-item">Manifiesto Iridium</a>
+                <a href="docs-instalacion.html" class="side-item">Instalación Avanzada</a>
+                <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+                <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+                <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+            </div>
+            
+            <div class="side-group">
+                <h4>🟡 Lógica de Servidor</h4>
+                <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+                <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+                <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+                <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+                <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+            </div>
+
+            <div class="side-group">
+                <h4>🔴 Núcleo e IA</h4>
+                <a href="docs-red.html" class="side-item">Manejo de Red</a>
+                <a href="docs-db.html" class="side-item">Bases de Datos</a>
+                <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+                <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+                <a href="docs-optimizacion.html" class="side-item">Optimización Backend</a>
+            </div>
+
+            <div class="side-group">
+                <h4>📚 Referencia Libs</h4>
+                <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+                <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+                <a href="lib-time.html" class="side-item">Lib-Time</a>
+                <a href="lib-network.html" class="side-item">Lib-Network</a>
+            </div>
+
+            <div class="side-group">
+                <h4>⚙️ Ecosistema</h4>
+                <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+                <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+                <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+                <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="doc-section">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 0.8em;">Nivel 1: Archivo 1</span>
+                <h1>El Manifiesto Iridium</h1>
+                
+                <p class="lead" style="font-size: 1.2em; color: var(--text-secondary); margin-bottom: 30px;">
+                    ¿Por qué el mundo necesita otro lenguaje de programación? La respuesta está en la resiliencia y la IA.
+                </p>
+
+                <hr style="border: 0.5px solid var(--border); margin: 30px 0;">
+
+                <h2>1. La Filosofía del Diseño</h2>
+                <p>Iridium nace de una necesidad crítica: los sistemas actuales de backend son frágiles. Si un servicio de red falla o un dato llega corrupto, la mayoría de los lenguajes lanzan una excepción que detiene todo el proceso. Iridium propone un paradigma de <strong>"Flujo Continuo"</strong>.</p>
+
+                <h2>2. El Problema: Velocidad vs. Robustez</h2>
+                <p>En la licenciatura de <strong>Ciencia de Datos</strong>, se suele elegir entre Python (rápido para prototipar pero difícil de optimizar en crudo) o C++ (rápido pero extremadamente complejo). Iridium busca ser el punto medio:</p>
+                
+                <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;">
+                    <div style="padding: 20px; border: 1px solid var(--border); border-radius: 12px;">
+                        <h4 style="color: var(--primary); margin-top: 0;"><i class="fa-solid fa-code-branch"></i> Prototipado</h4>
+                        <p style="font-size: 0.9em;">Sintaxis limpia y minimalista inspirada en los lenguajes de alto nivel.</p>
+                    </div>
+                    <div style="padding: 20px; border: 1px solid var(--border); border-radius: 12px;">
+                        <h4 style="color: var(--primary); margin-top: 0;"><i class="fa-solid fa-microchip"></i> Rendimiento</h4>
+                        <p style="font-size: 0.9em;">Motor optimizado para el manejo de tensores y matrices sin dependencias pesadas.</p>
+                    </div>
+                </div>
+
+                <h2>3. Pilares Fundamentales</h2>
+                <ul>
+                    <li><strong>Resiliencia Nativa:</strong> Manejo de errores integrado en la lógica de operadores (como el Operador Sponge).</li>
+                    <li><strong>IA Out-of-the-box:</strong> No necesitas instalar librerías para cálculos matemáticos complejos; están en el núcleo.</li>
+                    <li><strong>Seguridad por Diseño:</strong> Un modo "Secure" que protege el sistema operativo de scripts maliciosos.</li>
+                </ul>
+
+                <div style="margin-top: 50px; padding: 30px; background: var(--card-bg); border-radius: 20px; text-align: center; border: 1px solid var(--primary);">
+                    <h3 style="margin-top: 0;">"Construyendo el futuro del Backend"</h3>
+                    <p>Iridium no es solo código, es una arquitectura pensada para la nueva era de la Inteligencia Artificial.</p>
+                </div>
+
+                <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+                    <span></span> <a href="docs-instalacion.html" style="text-decoration: none; color: var(--primary); font-weight: bold;">Siguiente: Instalación Avanzada <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

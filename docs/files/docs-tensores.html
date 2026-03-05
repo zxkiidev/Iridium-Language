@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tensores y Matrices | Documentación Iridium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong><a href="../index.html">IRIDIUM</a></strong></div>
+        <div class="menu">
+            <a href="../docs.html">Docs</a>
+            <a href="../downloads.html">Downloads</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
+            <a href="../extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>🔴 Núcleo e IA</h4>
+                <a href="docs-red.html" class="side-item">Manejo de Red</a>
+                <a href="docs-db.html" class="side-item">Bases de Datos</a>
+                <a href="docs-tensores.html" class="side-item active-item">Tensores y Matrices</a>
+                <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+                <a href="docs-optimizacion.html" class="side-item">Optimización Backend</a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="doc-section">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 0.8em;">Nivel 3: Archivo 3</span>
+                <h1>Tensores y Computación Numérica</h1>
+                
+                <p>Iridium incorpora el tipo de dato <code>tensor</code> en su núcleo, permitiendo realizar operaciones matemáticas de alta velocidad sobre grandes volúmenes de datos sin necesidad de importar librerías externas como NumPy.</p>
+
+                <hr style="border: 0.5px solid var(--border); margin: 30px 0;">
+
+                <h2>1. Declaración de Tensores</h2>
+                <p>Un tensor puede ser una matriz simple o una estructura multidimensional. Se declaran usando la palabra clave <code>tensor</code>.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #6a9955;">// Creación de una matriz 2x2</span><br>
+                    <span style="color: #569cd6;">var</span> pesos: <span style="color: #4ec9b0;">tensor</span> = {{<span style="color: #b5cea8;">0.1</span>, <span style="color: #b5cea8;">0.9</span>}, {<span style="color: #b5cea8;">0.4</span>, <span style="color: #b5cea8;">0.2</span>}}
+                </div>
+
+                <h2>2. Operaciones Vectorizadas</h2>
+                <p>A diferencia de las listas normales, los tensores en Iridium soportan aritmética directa. Esto es fundamental para los algoritmos de redes neuronales.</p>
+
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">var</span> a = tensor({<span style="color: #b5cea8;">1</span>, <span style="color: #b5cea8;">2</span>})<br>
+                    <span style="color: #569cd6;">var</span> b = tensor({<span style="color: #b5cea8;">3</span>, <span style="color: #b5cea8;">4</span>})<br>
+                    <span style="color: #569cd6;">var</span> c = a * b <span style="color: #6a9955;">// Resultado: {3, 8}</span>
+                </div>
+
+                <h2>3. Integración con el Motor de IA</h2>
+                <p>Los tensores son la moneda de cambio entre el programador y el motor de IA de Iridium. Cualquier dato procesado puede ser inyectado directamente en un modelo pre-entrenado.</p>
+
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">var</span> input_data = myDB.fetchTensor(<span style="color: #ce9178;">"SELECT pixels FROM images"</span>)<br>
+                    <span style="color: #569cd6;">var</span> prediccion = ia.run(model, input_data)
+                </div>
+
+                <div style="margin-top: 40px; padding: 20px; background: rgba(3, 169, 244, 0.1); border-radius: 12px; border: 1px solid #03a9f4;">
+                    <h4 style="margin-top: 0; color: #03a9f4;"><i class="fa-solid fa-microchip"></i> Paralelismo</h4>
+                    <p style="margin: 0; font-size: 0.9em;">En la arquitectura de Iridium, las operaciones con el tipo <code>tensor</code> se delegan automáticamente a hilos de ejecución paralelos, aprovechando todos los núcleos de tu CPU de manera transparente.</p>
+                </div>
+
+                <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="docs-db.html" style="text-decoration: none; color: var(--primary);"><i class="fa-solid fa-arrow-left"></i> Anterior: Bases de Datos</a>
+                    <a href="docs-ia-nativa.html" style="text-decoration: none; color: var(--primary); font-weight: bold;">Siguiente: Integración con IA <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

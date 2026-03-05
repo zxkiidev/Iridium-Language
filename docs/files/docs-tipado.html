@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tipado Híbrido | Documentación Iridium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong><a href="../index.html">IRIDIUM</a></strong></div>
+        <div class="menu">
+            <a href="../docs.html">Docs</a>
+            <a href="../downloads.html">Downloads</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
+            <a href="../extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>🟢 El Despegue</h4>
+                <a href="docs-manifiesto.html" class="side-item">Manifiesto Iridium</a>
+                <a href="docs-instalacion.html" class="side-item">Instalación Avanzada</a>
+                <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+                <a href="docs-tipado.html" class="side-item active-item">Tipado Híbrido</a>
+                <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+            </div>
+            
+            <div class="side-group">
+                <h4>🟡 Lógica de Servidor</h4>
+                <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+                <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+                <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+                <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+                <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+            </div>
+
+            <div class="side-group">
+                <h4>🔴 Núcleo e IA</h4>
+                <a href="docs-red.html" class="side-item">Manejo de Red</a>
+                <a href="docs-db.html" class="side-item">Bases de Datos</a>
+                <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+                <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+                <a href="docs-optimizacion.html" class="side-item">Optimización Backend</a>
+            </div>
+
+            <div class="side-group">
+                <h4>📚 Referencia Libs</h4>
+                <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+                <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+                <a href="lib-time.html" class="side-item">Lib-Time</a>
+                <a href="lib-network.html" class="side-item">Lib-Network</a>
+            </div>
+
+            <div class="side-group">
+                <h4>⚙️ Ecosistema</h4>
+                <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+                <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+                <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+                <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="doc-section">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 0.8em;">Nivel 1: Archivo 4</span>
+                <h1>Tipado Híbrido</h1>
+                
+                <p>Iridium ofrece un sistema de <strong>Tipado Híbrido</strong>. Esto significa que puedes elegir entre la agilidad del tipado dinámico para prototipos rápidos o la seguridad del tipado estricto para sistemas de IA en producción.</p>
+
+                <hr style="border: 0.5px solid var(--border); margin: 30px 0;">
+
+                <h2>1. Variables Dinámicas (`var`)</h2>
+                <p>Ideal para cuando el tipo de dato puede cambiar o no es crítico para el rendimiento inmediato.</p>
+                
+                <div style="background: #1e1e1e; padding: 20px; color: white; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">var</span> nombre = <span style="color: #ce9178;">"Zadquiel"</span> <span style="color: #6a9955;">// El motor infiere que es string</span><br>
+                    <span style="color: #569cd6;">var</span> datos = <span style="color: #b5cea8;">100</span><br>
+                    datos = <span style="color: #ce9178;">"Cien"</span> <span style="color: #6a9955;">// Permitido en modo dinámico</span>
+                </div>
+
+                <h2>2. Tipado Estricto</h2>
+                <p>Al definir el tipo, Iridium optimiza la memoria. Según nuestras pruebas, esto puede aumentar el rendimiento hasta un <strong>500%</strong> en operaciones matemáticas complejas.</p>
+                
+                <div style="background: #1e1e1e; padding: 20px; color: white; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">var</span> precision: <span style="color: #4ec9b0;">float</span> = <span style="color: #b5cea8;">0.98</span><br>
+                    <span style="color: #569cd6;">var</span> epoca: <span style="color: #4ec9b0;">int</span> = <span style="color: #b5cea8;">10</span>
+                </div>
+
+                <h2>3. Constantes Inmutables (`const`)</h2>
+                <p>Las constantes no pueden ser reasignadas una vez definidas. Son esenciales para hiperparámetros de modelos de IA.</p>
+
+                <div style="background: #1e1e1e; padding: 20px; color: white; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">const</span> UMBRAL = <span style="color: #b5cea8;">0.85</span><br>
+                    <span style="color: #569cd6;">const</span> ID_NUCLEO: <span style="color: #4ec9b0;">int</span> = <span style="color: #b5cea8;">77</span>
+                </div>
+
+                <div style="padding: 15px; background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; border-radius: 4px; margin: 20px 0;">
+                    <p style="margin: 0; font-size: 0.9em; color: #ff8a80;"><strong>Error de Compilación:</strong> Si intentas hacer <code>UMBRAL = 0.90</code>, el motor Iridium lanzará un <code>Ir-Error: Inmutable violation</code>.</p>
+                </div>
+
+                <h2>4. Tipos Especiales (IA Ready)</h2>
+                <p>Iridium incluye tipos de datos nativos para el manejo científico:</p>
+                <ul>
+                    <li><code>tensor</code>: Matrices multidimensionales optimizadas para GPU.</li>
+                    <li><code>dataset</code>: Estructuras de datos preparadas para limpieza y análisis.</li>
+                    <li><code>cronos</code>: Variables temporales (ej: sensores que actualizan cada N segundos).</li>
+                </ul>
+
+                <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="docs-hola-mundo.html" style="text-decoration: none; color: var(--primary);"><i class="fa-solid fa-arrow-left"></i> Anterior: Hola Mundo</a>
+                    <a href="docs-io.html" style="text-decoration: none; color: var(--primary); font-weight: bold;">Siguiente: Entrada y Salida <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

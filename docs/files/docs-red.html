@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Manejo de Red | Documentación Iridium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong><a href="../index.html">IRIDIUM</a></strong></div>
+        <div class="menu">
+            <a href="../docs.html">Docs</a>
+            <a href="../downloads.html">Downloads</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
+            <a href="../extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>🟢 El Despegue</h4>
+                <a href="docs-manifiesto.html" class="side-item">Manifiesto Iridium</a>
+                <a href="docs-instalacion.html" class="side-item">Instalación Avanzada</a>
+                <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+                <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+                <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+            </div>
+            
+            <div class="side-group">
+                <h4>🟡 Lógica de Servidor</h4>
+                <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+                <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+                <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+                <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+                <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+            </div>
+
+            <div class="side-group">
+                <h4>🔴 Núcleo e IA</h4>
+                <a href="docs-red.html" class="side-item active-item">Manejo de Red</a>
+                <a href="docs-db.html" class="side-item">Bases de Datos</a>
+                <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+                <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+                <a href="docs-optimizacion.html" class="side-item">Optimización Backend</a>
+            </div>
+
+            <div class="side-group">
+                <h4>📚 Referencia Libs</h4>
+                <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+                <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+                <a href="lib-time.html" class="side-item">Lib-Time</a>
+                <a href="lib-network.html" class="side-item">Lib-Network</a>
+            </div>
+
+            <div class="side-group">
+                <h4>⚙️ Ecosistema</h4>
+                <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+                <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+                <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+                <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="doc-section">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 0.8em;">Nivel 3: Archivo 1</span>
+                <h1>Manejo de Red Nativo</h1>
+                
+                <p>Iridium trata las peticiones HTTP como ciudadanos de primera clase. Puedes definir la infraestructura de tu API directamente en la gramática del código, facilitando el despliegue de microservicios de IA.</p>
+
+                <hr style="border: 0.5px solid var(--border); margin: 30px 0;">
+
+                <h2>1. Definición de Endpoints</h2>
+                <p>Usa los verbos HTTP (GET, POST, PUT, DELETE) seguidos de la ruta para crear un punto de acceso. Iridium mapea automáticamente los parámetros de entrada.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">POST, GET</span> <span style="color: #ce9178;">"/analizar"</span> => (data: <span style="color: #4ec9b0;">tensor</span>, model_id: <span style="color: #4ec9b0;">int</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">if</span> (method == <span style="color: #ce9178;">"GET"</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">return</span> {status: <span style="color: #b5cea8;">200</span>, msg: <span style="color: #ce9178;">"Servidor Ir activo"</span>}<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #6a9955;">// Lógica de predicción</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">var</span> res = ia.predict(data, model_id)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">return</span> {resultado: res}
+                </div>
+
+                <h2>2. El comando `serve`</h2>
+                <p>Activa el servidor con una sola instrucción. Iridium gestiona internamente el multi-threading para soportar múltiples conexiones simultáneas.</p>
+
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #dcdcaa;">serve</span>(port: PORT, host: <span style="color: #ce9178;">"localhost"</span>)
+                </div>
+
+                <h2>3. Integración con Variables de Entorno</h2>
+                <p>Es una práctica recomendada combinar el manejo de red con el bloque <code>env</code> para mantener la resiliencia del puerto y el host.</p>
+
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">env</span> of <span style="color: #ce9178;">".env"</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">const</span> PORT: <span style="color: #4ec9b0;">int</span> = <span style="color: #b5cea8;">8080</span> <span style="color: #569cd6;">FROM</span> env.file<br><br>
+                    <span style="color: #dcdcaa;">serve</span>(port: PORT)
+                </div>
+
+                <div style="margin: 20px 0; padding: 15px; background: #2d2d2d; border-radius: 8px; border: 1px dashed var(--primary);">
+                    <h5 style="margin-top: 0; color: white"><i class="fa-solid fa-folder-tree"></i> Estructura Requerida</h5>
+                    <p style="margin-bottom: 5px; color: white; font-size: 0.9em;">Para que <code>env.file</code> funcione, el archivo <code>.env</code> debe estar en la <strong>misma ruta (directorio)</strong> que tu script <code>.iri</code>:</p>
+                    <code style="font-size: 0.85em; color: #b5cea8;">
+                        /proyecto<br>
+                        ├── main.iri<br>
+                        └── .env
+                    </code>
+                </div>
+
+                <div style="margin-top: 40px; padding: 20px; background: rgba(76, 175, 80, 0.1); border-radius: 12px; border: 1px solid #4caf50;">
+                    <h4 style="margin-top: 0; color: #4caf50;"><i class="fa-solid fa-cloud"></i> Microservicios Listos</h4>
+                    <p style="margin: 0; font-size: 0.9em;">Iridium está diseñado para ser "Docker-Friendly". Al compilar tu script <code>.iri</code>, el servidor nativo se levanta con una huella de memoria mínima, ideal para contenedores en la nube.</p>
+                </div>
+
+                <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="docs-seguridad.html" style="text-decoration: none; color: var(--primary);"><i class="fa-solid fa-arrow-left"></i> Anterior: Seguridad (Secure)</a>
+                    <a href="docs-db.html" style="text-decoration: none; color: var(--primary); font-weight: bold;">Siguiente: Bases de Datos <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

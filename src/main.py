@@ -1,186 +1,275 @@
 import re
 import sys
 import io
+import math
+import os
 
 # Forzar salida en UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
+# --- CLASES Y OBJETOS NATIVOS DE IRIDIUM ---
+class IridiumObject(dict):
+    __getattr__ = dict.get
+    __setattr__ = dict.__setitem__
+    __delattr__ = dict.__delitem__
+
+class IridiumMath:
+    sqrt = math.sqrt
+    pow = math.pow
+
+class IridiumIA:
+    def predict(self, data, mod):
+        return f"Tensor({data}) procesado por {mod}"
+
+class DummyDB:
+    def __init__(self, motor, host):
+        self.motor = motor
+        self.host = host
+    
+    def fetchAll(self):
+        # Simulamos una caída real del servidor para que Sponge (~>) actúe
+        raise Exception("Timeout: Base de datos no responde")
+
 class IridiumEngine:
     def __init__(self):
         self.variables = {}
-        self.constantes = [] 
-        self.saltar_bloque = False 
-        self.if_cumplido = False # <--- NUEVO: Para saber si saltar el ELSE
-        self.modo_env = False 
-        self.modo_secure = False 
+        self.constantes = set()
+        self.env_data = {}
+        self.modo_secure = False
+        self.in_multiline_comment = False
+        self.block_stack = [] 
+
+        # --- LIBRERÍA NATIVA V1.2 (Sólida) ---
+        self.lib_nativa = {
+            "math": IridiumMath(),
+            "ia": IridiumIA(),
+            # Funciones matemáticas directas para evitar errores de punto
+            "sqrt": math.sqrt,
+            "pow": math.pow,
+            "avrg": lambda x: sum(x) / len(x) if x else 0,
+            "tensor": lambda x: x,
+            "list": list,
+            "range": range,
+            "IridiumObject": IridiumObject
+        }
+
+    def eval_expr(self, expr, strict=False):
+        """Evalúa expresiones. Si strict=True, lanza errores (vital para Sponge ~>)"""
+        try:
+            expr = expr.replace("true", "True").replace("false", "False")
+            
+            # Rangos [1..100] -> list(range(1, 101))
+            expr = re.sub(r'\[(\d+)\.\.(\d+)\]', r'list(range(\1, \2 + 1))', expr)
+            
+            # Datasets {1, 2} -> [1, 2]
+            if "{" in expr and "}" in expr and not expr.startswith("IridiumObject"):
+                expr = expr.replace("{", "[").replace("}", "]")
+
+            # Mock para la conexión a DB que tiene sintaxis especial (host: DB_HOST)
+            if "connect(" in expr:
+                return DummyDB(self, "localhost")
+
+            ctx = {**self.lib_nativa, **self.variables}
+            return eval(expr, {"__builtins__": None}, ctx)
+        except Exception as e:
+            if strict: raise e # Si es estricto, lanzamos el error
+            return expr.strip('"').strip("'")
+
+    def cargar_env(self, ruta):
+        if os.path.exists(ruta):
+            with open(ruta, 'r', encoding='utf-8') as f:
+                for linea in f:
+                    if '=' in linea and not linea.strip().startswith("#"):
+                        k, v = linea.split('=', 1)
+                        self.env_data[k.strip()] = v.strip()
 
     def ejecutar_archivo(self, ruta_archivo):
+        if not ruta_archivo:
+            print("Uso: python main.py <archivo.iri>")
+            return
+
         try:
             with open(ruta_archivo, 'r', encoding='utf-8') as f:
-                 lineas = f.readlines()
-                 i = 0
-                 while i < len(lineas):
-                     i = self.procesar_linea(lineas[i], i)
-                     i += 1
+                lineas = f.readlines()
         except FileNotFoundError:
-            print(f"Error: No se encontró el archivo {ruta_archivo}")
+            return
 
-    def validar_tipo(self, nombre, tipo, valor):
-        tipos_map = {"int": int, "float": (float, int), "string": str, "bool": bool}
-        if tipo in tipos_map:
-            if not isinstance(valor, tipos_map[tipo]):
-                raise TypeError(f"[Ir-Error]: La variable '{nombre}' espera un '{tipo}' pero recibió '{type(valor).__name__}'")
+        i = 0
+        while i < len(lineas):
+            linea = lineas[i].strip()
 
-    def procesar_linea(self, linea_original, indice_actual=0):
-        linea_stripped = linea_original.strip()
-        
-        # Manejo de fin de bloque
-        if linea_stripped == "end":
-            self.saltar_bloque = False
-            self.modo_secure = False
-            return indice_actual
+            if "/*" in linea: self.in_multiline_comment = True
+            if self.in_multiline_comment:
+                if "*/" in linea: self.in_multiline_comment = False
+                i += 1; continue
 
-        # Reiniciar saltar_bloque solo si no estamos en una indentación
-        if linea_original.strip() and not (linea_original.startswith("    ") or linea_original.startswith("\t")):
-            # Si la línea es un 'else:', no reiniciamos saltar_bloque todavía
-            if not linea_stripped.startswith("else:"):
-                if not self.modo_secure:
-                    self.saltar_bloque = False
-                self.modo_env = False
+            if not linea or linea.startswith("//"):
+                i += 1; continue
 
-        # Si estamos saltando bloque, solo escuchamos al 'else:' o al 'end'
-        if self.saltar_bloque and not linea_stripped.startswith("else:"):
-            return indice_actual
+            if self.block_stack and self.block_stack[-1].get("skip", False):
+                if linea == "end" or linea.startswith("else:"):
+                    pass 
+                else:
+                    i += 1; continue
 
-        if not linea_stripped or linea_stripped.startswith("//"):
-            return indice_actual
+            if linea == "end":
+                if self.block_stack:
+                    bloque = self.block_stack.pop()
+                    if bloque["type"] == "secure":
+                        self.modo_secure = False
+                    elif bloque["type"] == "while" and self.eval_expr(bloque["cond"]):
+                        self.block_stack.append(bloque)
+                        i = bloque["start_idx"]; continue
+                    elif bloque["type"] == "for":
+                        paso = bloque["step"]
+                        if "++" in paso:
+                            self.variables[paso.replace("++", "").strip()] += 1
+                        if self.eval_expr(bloque["cond"]):
+                            self.block_stack.append(bloque)
+                            i = bloque["start_idx"]; continue
+                i += 1; continue
 
-        # --- LÓGICA: IF ---
-        if linea_stripped.startswith("if ") and linea_stripped.endswith(":"):
-            cond = linea_stripped[3:-1].strip().replace("(", "").replace(")", "")
-            # Reemplazar variables (de la más larga a la más corta para evitar errores)
-            for v_n in sorted(self.variables.keys(), key=len, reverse=True):
-                if v_n in cond:
-                    cond = cond.replace(v_n, str(self.variables[v_n]))
+            if linea.startswith("secure:"):
+                self.modo_secure = True
+                self.block_stack.append({"type": "secure", "skip": False})
+                i += 1; continue
+
+            if linea.startswith("env of"):
+                self.cargar_env(re.search(r'"([^"]*)"', linea).group(1))
+                i += 1; continue
+
+            # --- SINTAXIS RAPIDA: dbpass >> out ---
+            if linea.endswith(">> out"):
+                var_name = linea.replace(">> out", "").strip()
+                val = self.variables.get(var_name, "[Indefinido]")
+                print(f">> {val}")
+                i += 1; continue
+
+            if linea.startswith("if ") and linea.endswith(":"):
+                cond = linea[3:-1].strip()
+                res = bool(self.eval_expr(cond))
+                self.block_stack.append({"type": "if", "skip": not res, "handled": res})
+                i += 1; continue
+
+            if linea.startswith("else:"):
+                if self.block_stack and self.block_stack[-1]["type"] == "if":
+                    self.block_stack[-1]["skip"] = self.block_stack[-1]["handled"]
+                i += 1; continue
+
+            if linea.startswith("for ") and linea.endswith(":"):
+                partes = linea[4:-1].strip().strip("()").split(";")
+                init = partes[0].replace("var", "").strip()
+                cond, step = partes[1].strip(), partes[2].strip()
+                v_n, v_v = init.split("=")
+                self.variables[v_n.strip()] = int(v_v.strip())
+                res = bool(self.eval_expr(cond))
+                self.block_stack.append({"type": "for", "start_idx": i + 1, "cond": cond, "step": step, "skip": not res})
+                i += 1; continue
+
+            if linea.startswith("while ") and linea.endswith(":"):
+                cond = linea[6:-1].strip().strip("()")
+                res = bool(self.eval_expr(cond))
+                self.block_stack.append({"type": "while", "start_idx": i + 1, "cond": cond, "skip": not res})
+                i += 1; continue
+
+            if linea.startswith("switch"):
+                var_name = linea.split("(")[1].split(")")[0].strip()
+                self.block_stack.append({"type": "switch", "val": self.variables.get(var_name), "matched": False})
+                i += 1; continue
+
+            if linea.startswith("case ") and self.block_stack and self.block_stack[-1]["type"] == "switch":
+                bloque_sw = self.block_stack[-1]
+                if bloque_sw["matched"]: i += 1; continue
+                partes_case = linea.split(":", 1)
+                if str(bloque_sw["val"]) == partes_case[0].replace("case", "").strip().strip('"'):
+                    bloque_sw["matched"] = True
+                    if len(partes_case) > 1 and partes_case[1].strip():
+                        lineas.insert(i + 1, partes_case[1].strip() + "\n")
+                i += 1; continue
             
-            cond = cond.replace("true", "True").replace("false", "False")
-            
-            self.if_cumplido = eval(cond)
-            self.saltar_bloque = not self.if_cumplido
-            return indice_actual
+            if linea.startswith("default:") and self.block_stack and self.block_stack[-1]["type"] == "switch":
+                if not self.block_stack[-1]["matched"]:
+                    accion = linea.split(":", 1)[1].strip()
+                    if accion: lineas.insert(i + 1, accion + "\n")
+                i += 1; continue
 
-        # --- LÓGICA: ELSE ---
-        if linea_stripped.startswith("else:"):
-            # Si el IF se cumplió, el ELSE debe saltarse.
-            # Si el IF NO se cumplió, el ELSE NO debe saltarse.
-            self.saltar_bloque = self.if_cumplido
-            return indice_actual
+            if " += " in linea or " -= " in linea:
+                v_name, cant = re.split(r'\s*\+=\s*|\s*-=\s*', linea)
+                cant_val = float(self.eval_expr(cant))
+                if "+=" in linea: self.variables[v_name] += cant_val
+                if "-=" in linea: self.variables[v_name] -= cant_val
+                i += 1; continue
 
-        # --- LÓGICA: SECURE ---
-        if linea_stripped.startswith("secure:"):
-            self.modo_secure = True
-            return indice_actual
-
-        # --- LÓGICA: MIRROR LOG (>> out) ---
-        if " >> out" in linea_stripped:
-            target = linea_stripped.split(">> out")[0].strip().split(":")[0].strip()
-            if target in self.variables:
-                val = "********" if self.modo_secure else self.variables[target]
-                print(f"[MIRROR LOG]: {target} = {val}")
-            return indice_actual
-
-        # --- LÓGICA: ASIGNACIÓN COMPUESTA ---
-        if any(op in linea_stripped for op in ["+=", "*=", "++"]) and not linea_stripped.startswith("var "):
-            if "++" in linea_stripped:
-                var_n = linea_stripped.replace("++", "").strip()
-                if var_n in self.variables: self.variables[var_n] += 1
-            else:
-                for op in ["+=", "*="]:
-                    if op in linea_stripped:
-                        var_n, val_ext = linea_stripped.split(op)
-                        var_n = var_n.strip()
-                        if var_n in self.variables:
-                            self.variables[var_n] = eval(f"{self.variables[var_n]} {op[0]} {val_ext}")
-            return indice_actual
-
-        # --- LÓGICA: CONSTANTES ---
-        if linea_stripped.startswith("const "):
-            partes = linea_stripped.replace("const ", "").split("=", 1)
-            nombre = partes[0].split(":")[0].strip()
-            self.constantes.append(nombre)
-            valor_raw = partes[1].split("FROM")[0].strip() if "=" in linea_stripped else "0"
-            valor_raw = valor_raw.replace("true", "True").replace("false", "False")
-            self.variables[nombre] = eval(valor_raw)
-            return indice_actual
-
-        # --- LÓGICA: VARIABLES Y SPONGE ---
-        if linea_stripped.startswith("var "):
-            partes_igual = linea_stripped[4:].split("=", 1)
-            meta = partes_igual[0].strip()
-            nombre_real = meta.split(":")[0].strip()
-            
-            if nombre_real in self.constantes:
-                print(f"[Ir-Error]: No se puede reasignar la constante '{nombre_real}'")
-                sys.exit(1)
-
-            # --- NUEVA LÓGICA: INPUT (await) ---
-            if "await" in partes_igual[1]:
-                # Extraemos el mensaje dentro de las comillas después de await
-                mensaje_match = re.search(r'await\s+"([^"]*)"', partes_igual[1])
-                prompt = mensaje_match.group(1) if mensaje_match else ""
+            # --- RED Y API (VERSIÓN CORREGIDA) ---
+            if "=>" in linea and ("POST" in linea or "GET" in linea):
+                endpoint_info = linea.split('=>')[0].strip()
+                print(f"🌐 [Red] Endpoint registrado: {endpoint_info}")
                 
-                # Pausamos el motor para recibir el dato del usuario
-                valor_usuario = input(prompt)
+                # Buscamos el final del bloque para no ejecutar el código interno ahora
+                # (Ese código solo debe correr cuando alguien llame a la URL)
+                j = i + 1
+                while j < len(lineas) and lineas[j].strip() != "end":
+                    j += 1
                 
-                # Intentamos convertir a número si es posible, si no, se queda como string
-                try:
-                    if "." in valor_usuario: valor_final = float(valor_usuario)
-                    else: valor_final = int(valor_usuario)
-                except ValueError:
-                    valor_final = valor_usuario
-            
-            # --- LÓGICA ORIGINAL (Sponge y eval) ---
-            else:
-                valor_raw = linea_stripped.split("~>")[1].strip() if "~>" in linea_stripped else partes_igual[1].strip()
-                valor_raw = valor_raw.replace("true", "True").replace("false", "False")
+                i = j + 1 # Saltamos directamente después del 'end'
+                continue
+
+            if linea.startswith("serve("):
+                print(f"🚀 [Iridium V1] Servidor Web levantado y escuchando peticiones.")
+                i += 1; continue
+
+            if ("=" in linea or "var " in linea or "const " in linea) and not linea.startswith("out "):
+                if "FROM env.file" in linea:
+                    partes = linea.split("=")[0] if "=" in linea else linea.split("FROM")[0]
+                    nombre = partes.replace("const", "").replace("var", "").strip().split(":")[0].strip()
+                    val = self.env_data.get(nombre, "")
+                    self.variables[nombre] = int(val) if str(val).isdigit() else val
+                    if "const " in linea: self.constantes.add(nombre)
+                    i += 1; continue
+
+                es_const = "const " in linea
+                limpia = linea.replace("const ", "").replace("var ", "")
                 
-                for v_n in sorted(self.variables.keys(), key=len, reverse=True):
-                    if v_n in valor_raw:
-                        valor_raw = valor_raw.replace(v_n, str(self.variables[v_n]))
-                
-                try:
-                    valor_final = eval(valor_raw)
-                except:
-                    valor_final = valor_raw.strip('"')
+                if "~>" in limpia:
+                    expr_izq, expr_der = limpia.split("~>", 1)
+                    nombre = expr_izq.split("=", 1)[0].split(":")[0].strip()
+                    try:
+                        # Evaluamos estrictamente para forzar el error de red simulado
+                        valor_final = self.eval_expr(expr_izq.split("=", 1)[1].strip(), strict=True)
+                    except Exception as e:
+                        # ¡Sponge te salva! Captura el error y usa el dataset de respaldo
+                        valor_final = self.eval_expr(expr_der.strip())
+                else:
+                    nombre, val_raw = limpia.split("=", 1)[0].split(":")[0].strip(), limpia.split("=", 1)[1].strip()
+                    if nombre in self.constantes:
+                        print(f"[Ir-Error Fatal] Constante '{nombre}' protegida en memoria.")
+                        sys.exit(1)
+                    valor_final = self.eval_expr(val_raw)
 
-            # Validación de tipo (funciona igual para el input)
-            if ":" in meta:
-                self.validar_tipo(nombre_real, meta.split(":")[1].strip(), valor_final)
+                self.variables[nombre] = valor_final
+                if es_const: self.constantes.add(nombre)
+                i += 1; continue
 
-            self.variables[nombre_real] = valor_final
-            return indice_actual
-
-        # --- LÓGICA: OUT ---
-        elif linea_stripped.startswith("out "):
-            matches = re.findall(r'"([^"]*)"', linea_stripped)
-            if matches:
-                texto = matches[0]
-                variables_en_texto = re.findall(r'\{([^}]*)\}', texto)
-                for item in variables_en_texto:
-                    nombre_var = item.split(",")[0].strip()
-                    if nombre_var in self.variables:
-                        if "encrypted: false" in item:
-                            val = str(self.variables[nombre_var])
+            if linea.startswith("out "):
+                texto_match = re.search(r'"([^"]*)"', linea)
+                if texto_match:
+                    texto = texto_match.group(1)
+                    for v_match in re.findall(r'\{([^}]*)\}', texto):
+                        v_base = v_match.split(",")[0].strip()
+                        if "." in v_base:
+                            val = str(self.variables.get(v_base.split(".")[0], {}).get(v_base.split(".")[1], "Indefinido"))
                         else:
-                            val = "********" if self.modo_secure else str(self.variables[nombre_var])
-                        texto = texto.replace(f"{{{item}}}", val)
-                print(texto)
-        
-        return indice_actual
+                            val = str(self.variables.get(v_base, "Indefinido"))
+                        if self.modo_secure and "encrypted: false" not in v_match: val = "********"
+                        texto = texto.replace(f"{{{v_match}}}", val)
+                    print(texto)
+                i += 1; continue
+
+            i += 1
 
 if __name__ == "__main__":
     engine = IridiumEngine()
-    archivo = sys.argv[1] if len(sys.argv) > 1 else input("Archivo .iri: ")
-    print("\n>>> [IRIDIUM ENGINE ACTIVE]")
-    engine.ejecutar_archivo(archivo)
-    print(">>> [EJECUCIÓN FINALIZADA]\n")
+    if len(sys.argv) > 1:
+        engine.ejecutar_archivo(sys.argv[1])
+    else:
+        print("Iridium V1.1 Core")

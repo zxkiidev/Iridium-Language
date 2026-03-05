@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bases de Datos | Documentación Iridium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong><a href="../index.html">IRIDIUM</a></strong></div>
+        <div class="menu">
+            <a href="../docs.html">Docs</a>
+            <a href="../downloads.html">Downloads</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
+            <a href="../extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>🟢 El Despegue</h4>
+                <a href="docs-manifiesto.html" class="side-item">Manifiesto Iridium</a>
+                <a href="docs-instalacion.html" class="side-item">Instalación Avanzada</a>
+                <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+                <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+                <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+            </div>
+            
+            <div class="side-group">
+                <h4>🟡 Lógica de Servidor</h4>
+                <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+                <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+                <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+                <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+                <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+            </div>
+
+            <div class="side-group">
+                <h4>🔴 Núcleo e IA</h4>
+                <a href="docs-red.html" class="side-item">Manejo de Red</a>
+                <a href="docs-db.html" class="side-item active-item">Bases de Datos</a>
+                <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+                <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+                <a href="docs-optimizacion.html" class="side-item">Optimización Backend</a>
+            </div>
+
+            <div class="side-group">
+                <h4>📚 Referencia Libs</h4>
+                <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+                <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+                <a href="lib-time.html" class="side-item">Lib-Time</a>
+                <a href="lib-network.html" class="side-item">Lib-Network</a>
+            </div>
+
+            <div class="side-group">
+                <h4>⚙️ Ecosistema</h4>
+                <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+                <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+                <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+                <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="doc-section">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 0.8em;">Nivel 3: Archivo 2</span>
+                <h1>Conectividad de Datos Nativa</h1>
+                
+                <p>Iridium simplifica la persistencia de datos mediante el bloque <code>database</code>. El motor gestiona internamente el pool de conexiones y la seguridad de las credenciales.</p>
+
+                <hr style="border: 0.5px solid var(--border); margin: 30px 0;">
+
+                <h2>1. Conexión Segura</h2>
+                <p>Combinando el bloque <code>secure</code> y <code>env</code>, puedes conectar a una base de datos sin exponer jamás las credenciales en el código fuente.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">secure</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">database</span> myDB = connect(<span style="color: #4ec9b0;">"postgresql"</span>, host: <span style="color: #569cd6;">FROM</span> env.file)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #6a9955;">// La conexión está protegida y cifrada</span><br>
+                    <span style="color: #569cd6;">end</span>
+                </div>
+
+                
+
+                <h2>2. Consultas Híbridas</h2>
+                <p>Iridium permite realizar consultas utilizando una sintaxis limpia que mezcla SQL con la lógica del lenguaje. Los resultados se mapean automáticamente a colecciones de Iridium.</p>
+
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">var</span> usuarios = myDB.query(<span style="color: #ce9178;">"SELECT name FROM users WHERE active = true"</span>)<br><br>
+                    <span style="color: #569cd6;">for</span> (user <span style="color: #569cd6;">in</span> usuarios):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Usuario activo: {user.name}"</span>
+                </div>
+
+                <h2>3. El Operador Sponge en DB</h2>
+                <p>Es muy común que una consulta falle o no devuelva resultados. Aquí es donde el operador <code>~></code> brilla, permitiendo definir un dataset de respaldo.</p>
+
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #6a9955;">// Si la DB está caída o vacía, usa la lista local</span><br>
+                    <span style="color: #569cd6;">var</span> data = myDB.fetchAll() <span style="color: #dcdcaa; font-weight: bold;">~></span> {<span style="color: #ce9178;">"Invitado"</span>, <span style="color: #ce9178;">"Anónimo"</span>}
+                </div>
+
+                <div style="margin-top: 40px; padding: 20px; background: rgba(255, 152, 0, 0.1); border-radius: 12px; border: 1px solid #ff9800;">
+                    <h4 style="margin-top: 0; color: #ff9800;"><i class="fa-solid fa-database"></i> Motores Soportados</h4>
+                    <p style="margin: 0; font-size: 0.9em;">En su versión V1, Iridium soporta nativamente <strong>PostgreSQL, MySQL y SQLite</strong>. El soporte para bases de datos vectoriales (esenciales para IA) está en desarrollo para la V2.</p>
+                </div>
+
+                <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="docs-red.html" style="text-decoration: none; color: var(--primary);"><i class="fa-solid fa-arrow-left"></i> Anterior: Manejo de Red</a>
+                    <a href="docs-tensores.html" style="text-decoration: none; color: var(--primary); font-weight: bold;">Siguiente: Tensores y Matrices <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

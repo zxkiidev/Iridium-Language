@@ -1,11 +1,77 @@
-// Prueba de entrada de datos en Iridium
-out "--- SISTEMA DE ACCESO ---"
+/* ==========================================
+* IRIDIUM V1.0 - TEST MAESTRO DE SISTEMA
+* Diseñado para entornos de IA y Backend
+* ========================================== */
 
-var nombre: string = await "Ingresa tu nombre: "
-var edad: int = await "Ingresa tu edad: "
+out "=== INICIANDO SECUENCIA DE ARRANQUE IRIDIUM ==="
 
-if edad >= 18:
-    out "Bienvenido {nombre}, tienes acceso al servidor."
-else:
-    out "Lo siento {nombre}, el acceso requiere ser mayor de edad."
+// 1. CARGA DE ENTORNO Y CONSTANTES
+env of ".env":
+    const PORT: int = 8080 FROM env.file
+    const API_KEY: string FROM env.file
+    const DB_HOST: string FROM env.file
+
+const VERSION = 1.0
+out "[OK] Entorno cargado. Puerto: {PORT} | Version: {VERSION}"
+
+// 2. VARIABLES, MATEMÁTICAS Y DATASETS (Rangos y Arreglos)
+var dataset = {10, 20, 30, 40}
+var epocas = [1..3]
+var media = avrg(dataset)
+var calculo = sqrt(64) + pow(2, 3)
+
+out "[OK] Matemáticas. Media del dataset: {media} | 8+8 = {calculo}"
+out "[OK] Rango generado: {epocas}"
+
+// 3. CONTROL DE FLUJO (While, For, If, Switch)
+var energia = 2
+while (energia > 0):
+    energia -= 1
+    out "   -> [While] Energía bajando a: {energia}"
 end
+
+for (var i = 1; i < 3; i++):
+    out "   -> [For] Procesando iteración: {i}"
+
+var estado = "activo"
+switch (estado):
+    case "error": out "   -> [Switch] Fallo detectado"
+    case "activo": out "   -> [Switch] Sistema operativo y estable"
+    default: out "   -> [Switch] Desconocido"
+end
+
+if (media == 25):
+    out "[OK] El condicional IF funciona perfectamente."
+else:
+    out "[FAIL] Matemáticas incorrectas."
+
+// 4. SEGURIDAD Y BASES DE DATOS (Secure y Sponge ~>)
+secure:
+    database myDB = connect("postgresql", host: DB_HOST)
+    var db_pass = "clave_super_secreta_ubi"
+    out "[SECURE] Guardando contraseña: {db_pass}" 
+    dbpass >> out
+    out "[SECURE-BYPASS] Contraseña real: {db_pass, encrypted: false}"
+end
+
+// Operador Sponge: myDB.fetchAll() fallará a propósito en nuestro motor para probar el rescate
+var datos_seguros = myDB.fetchAll() ~> {"Invitado", "Anónimo"}
+out "[OK] Operador Sponge rescató los datos: {datos_seguros}"
+
+// 5. TENSORES E INTELIGENCIA ARTIFICIAL
+var pesos: tensor = {{0.1, 0.9}, {0.4, 0.2}}
+var input_data = tensor({1, 0})
+var prediccion = ia.predict(input_data, "Modelo_Vision_V1")
+out "[OK] IA nativa ejecutada. Resultado: {prediccion}"
+
+// 6. MANEJO DE RED Y MICROSERVICIOS
+POST, GET "/analizar" => (data: tensor, model_id: int):
+    if (method == "GET"):
+        return {status: 200, msg: "Servidor Ir activo"}
+    
+    var res = ia.predict(data, model_id)
+    return {resultado: res}
+end  // <--- ¡AÑADE ESTO! Es el muro que detiene el salto del motor.
+
+out "=== LEVANTANDO SERVIDOR WEB ==="
+serve(port: PORT, host: "0.0.0.0")

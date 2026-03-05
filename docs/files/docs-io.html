@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Entrada y Salida (I/O) | Documentación Iridium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong><a href="../index.html">IRIDIUM</a></strong></div>
+        <div class="menu">
+            <a href="../docs.html">Docs</a>
+            <a href="../downloads.html">Downloads</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
+            <a href="../extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>🟢 El Despegue</h4>
+                <a href="docs-manifiesto.html" class="side-item">Manifiesto Iridium</a>
+                <a href="docs-instalacion.html" class="side-item">Instalación Avanzada</a>
+                <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+                <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+                <a href="docs-io.html" class="side-item active-item">Entrada y Salida (I/O)</a>
+            </div>
+            
+            <div class="side-group">
+                <h4>🟡 Lógica de Servidor</h4>
+                <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+                <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+                <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+                <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+                <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+            </div>
+
+            <div class="side-group">
+                <h4>🔴 Núcleo e IA</h4>
+                <a href="docs-red.html" class="side-item">Manejo de Red</a>
+                <a href="docs-db.html" class="side-item">Bases de Datos</a>
+                <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+                <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+                <a href="docs-optimizacion.html" class="side-item">Optimización Backend</a>
+            </div>
+
+            <div class="side-group">
+                <h4>📚 Referencia Libs</h4>
+                <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+                <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+                <a href="lib-time.html" class="side-item">Lib-Time</a>
+                <a href="lib-network.html" class="side-item">Lib-Network</a>
+            </div>
+
+            <div class="side-group">
+                <h4>⚙️ Ecosistema</h4>
+                <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+                <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+                <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+                <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="doc-section">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 0.8em;">Nivel 1: Archivo 5</span>
+                <h1>Entrada y Salida (I/O)</h1>
+                
+                <p>La comunicación entre el programa y el usuario es vital. Iridium simplifica esto mediante una sintaxis limpia para imprimir datos y una instrucción asíncrona para recibirlos.</p>
+
+                <hr style="border: 0.5px solid var(--border); margin: 30px 0;">
+
+                <h2>1. Salida de Datos: `out`</h2>
+                <p>La instrucción <code>out</code> envía información a la consola. Soporta interpolación nativa de variables usando llaves <code>{}</code>.</p>
+                
+                <div style="background: #1e1e1e; padding: 20px; color: white; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">var</span> usuario = <span style="color: #ce9178;">"zxkiidev"</span><br>
+                    <span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Bienvenido al sistema, {usuario}"</span>
+                </div>
+
+                <p>Puedes incluir expresiones matemáticas o llamadas a funciones directamente dentro de las llaves:</p>
+                <div style="background: #1e1e1e; padding: 20px; color: white; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 10px 0;">
+                    <span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"El resultado es: {math.sqrt(64)}"</span>
+                </div>
+
+                
+
+                <h2>2. Entrada de Datos: `await`</h2>
+                <p>Para capturar información del usuario, utilizamos la palabra clave <code>await</code>. Esta pausa la ejecución del motor hasta que el usuario presiona <strong>Enter</strong>.</p>
+                
+                <div style="background: #1e1e1e; padding: 20px; color: white; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #6a9955;">// Captura interactiva</span><br>
+                    <span style="color: #569cd6;">var</span> edad: <span style="color: #4ec9b0;">int</span> = <span style="color: #569cd6;">await</span> <span style="color: #ce9178;">"Ingresa tu edad: "</span><br><br>
+                    <span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Tienes {edad} años."</span>
+                </div>
+
+                <h2>3. Flujos de Datos Dinámicos</h2>
+                <p>En el contexto de Ciencia de Datos, Iridium permite conectar entradas y salidas mediante el operador <strong>Pipe (>>)</strong>.</p>
+                
+                <div style="background: #1e1e1e; padding: 20px; color: white; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #6a9955;">// Redirección de salida a log de depuración</span><br>
+                    <span style="color: #569cd6;">var</span> accuracy = <span style="color: #b5cea8;">0.95</span><br>
+                    accuracy <span style="color: #dcdcaa; font-weight: bold;">>> out</span> <span style="color: #6a9955;">// Mirror Log activo</span>
+                </div>
+
+                <div style="margin-top: 40px; padding: 20px; background: rgba(74, 222, 128, 0.1); border-radius: 12px; border: 1px solid #4ade80;">
+                    <h4 style="margin-top: 0; color: #4ade80;"><i class="fa-solid fa-shield-halved"></i> Seguridad I/O</h4>
+                    <p style="margin: 0; font-size: 0.9em;">Recuerda que si estás dentro de un bloque <code>secure:</code>, los datos impresos con <code>out</code> se mostrarán como asteriscos (<code>********</code>) a menos que especifiques lo contrario.</p>
+                </div>
+
+                <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="docs-tipado.html" style="text-decoration: none; color: var(--primary);"><i class="fa-solid fa-arrow-left"></i> Anterior: Tipado Híbrido</a>
+                    <a href="docs-sponge.html" style="text-decoration: none; color: var(--primary); font-weight: bold;">Siguiente: Operador Sponge <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

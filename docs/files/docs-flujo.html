@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Control de Flujo | Documentación Iridium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong><a href="../index.html">IRIDIUM</a></strong></div>
+        <div class="menu">
+            <a href="../docs.html">Docs</a>
+            <a href="../downloads.html">Downloads</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
+            <a href="../extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>🟢 El Despegue</h4>
+                <a href="docs-manifiesto.html" class="side-item">Manifiesto Iridium</a>
+                <a href="docs-instalacion.html" class="side-item">Instalación Avanzada</a>
+                <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+                <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+                <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+            </div>
+            
+            <div class="side-group">
+                <h4>🟡 Lógica de Servidor</h4>
+                <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+                <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+                <a href="docs-flujo.html" class="side-item active-item">Control de Flujo</a>
+                <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+                <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+            </div>
+
+            <div class="side-group">
+                <h4>🔴 Núcleo e IA</h4>
+                <a href="docs-red.html" class="side-item">Manejo de Red</a>
+                <a href="docs-db.html" class="side-item">Bases de Datos</a>
+                <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+                <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+                <a href="docs-optimizacion.html" class="side-item">Optimización Backend</a>
+            </div>
+
+            <div class="side-group">
+                <h4>📚 Referencia Libs</h4>
+                <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+                <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+                <a href="lib-time.html" class="side-item">Lib-Time</a>
+                <a href="lib-network.html" class="side-item">Lib-Network</a>
+            </div>
+
+            <div class="side-group">
+                <h4>⚙️ Ecosistema</h4>
+                <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+                <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+                <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+                <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="doc-section">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 0.8em;">Nivel 2: Archivo 3</span>
+                <h1>Control de Flujo</h1>
+                
+                <p>Iridium utiliza una combinación de indentación y palabras clave de cierre para garantizar que el flujo lógico sea legible y fácil de depurar en entornos de Backend.</p>
+
+                <hr style="border: 0.5px solid var(--border); margin: 30px 0;">
+
+                <h2>1. Condicionales: `if / else`</h2>
+                <p>La estructura básica utiliza <code>:</code> para abrir el bloque. No es obligatorio el uso de paréntesis, pero se recomienda para mejorar la claridad en condiciones complejas.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">if</span> (precision > UMBRAL):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Modelo estable con {precision}%"</span><br>
+                    <span style="color: #569cd6;">else</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Reajustando pesos..."</span>
+                </div>
+
+                <h2>2. Bucle For (Estilo C/Java)</h2>
+                <p>Para iteraciones numéricas precisas, Iridium adopta la sintaxis clásica de tres expresiones. Es ideal para controlar épocas de entrenamiento en IA.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">for</span> (<span style="color: #569cd6;">var</span> i = <span style="color: #b5cea8;">0</span>; i < <span style="color: #b5cea8;">100</span>; i++):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Procesando época: {i}"</span>
+                </div>
+
+                
+
+                <h2>3. Bucle While y Cierre `end`</h2>
+                <p>El bucle <code>while</code> se ejecuta mientras la condición sea verdadera. Todos los bloques extensos en Iridium pueden cerrarse con <code>end</code> para evitar ambigüedades en archivos grandes.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">while</span> (energia > <span style="color: #b5cea8;">0</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;energia -= <span style="color: #b5cea8;">1.5</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Energía restante: {energia}"</span><br>
+                    <span style="color: #569cd6;">end</span>
+                </div>
+
+                <h2>4. Selección: `switch`</h2>
+                <p>Evita múltiples <code>if</code> anidados utilizando la estructura de selección nativa.</p>
+
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">switch</span> (estado):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">case</span> <span style="color: #ce9178;">"activo"</span>: conectar()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">case</span> <span style="color: #ce9178;">"error"</span>: <span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Fallo detectado"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">default</span>: <span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Estado desconocido"</span><br>
+                    <span style="color: #569cd6;">end</span>
+                </div>
+
+                <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="docs-colecciones.html" style="text-decoration: none; color: var(--primary);"><i class="fa-solid fa-arrow-left"></i> Anterior: Colecciones</a>
+                    <a href="docs-memoria.html" style="text-decoration: none; color: var(--primary); font-weight: bold;">Siguiente: Gestión de Memoria <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

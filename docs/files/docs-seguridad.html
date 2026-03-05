@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Seguridad (Secure) | Documentación Iridium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong><a href="../index.html">IRIDIUM</a></strong></div>
+        <div class="menu">
+            <a href="../docs.html">Docs</a>
+            <a href="../downloads.html">Downloads</a>
+            <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank">GitHub</a>
+            <a href="../extension.html" class="btn-nav-primary"><i class="fab fa-microsoft"></i> VS Code Extension</a>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside>
+            <div class="side-group">
+                <h4>🟢 El Despegue</h4>
+                <a href="docs-manifiesto.html" class="side-item">Manifiesto Iridium</a>
+                <a href="docs-instalacion.html" class="side-item">Instalación Avanzada</a>
+                <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+                <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+                <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+            </div>
+            
+            <div class="side-group">
+                <h4>🟡 Lógica de Servidor</h4>
+                <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+                <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+                <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+                <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+                <a href="docs-seguridad.html" class="side-item active-item">Seguridad (Secure)</a>
+            </div>
+
+            <div class="side-group">
+                <h4>🔴 Núcleo e IA</h4>
+                <a href="docs-red.html" class="side-item">Manejo de Red</a>
+                <a href="docs-db.html" class="side-item">Bases de Datos</a>
+                <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+                <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+                <a href="docs-optimizacion.html" class="side-item">Optimización Backend</a>
+            </div>
+
+            <div class="side-group">
+                <h4>📚 Referencia Libs</h4>
+                <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+                <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+                <a href="lib-time.html" class="side-item">Lib-Time</a>
+                <a href="lib-network.html" class="side-item">Lib-Network</a>
+            </div>
+
+            <div class="side-group">
+                <h4>⚙️ Ecosistema</h4>
+                <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+                <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+                <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+                <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="doc-section">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 0.8em;">Nivel 2: Archivo 5</span>
+                <h1>Seguridad Nativa: El Bloque `secure`</h1>
+                
+                <p>Iridium implementa el paradigma <strong>"Secure-by-Default"</strong>. Entendemos que en el Backend y la IA, la protección de datos no debe ser opcional, sino una instrucción del núcleo del lenguaje.</p>
+
+                <hr style="border: 0.5px solid var(--border); margin: 30px 0;">
+
+                <h2>1. El Bloque `secure:`</h2>
+                <p>Cualquier operación de guardado, log o impresión dentro de este bloque activa automáticamente capas de protección y encriptación de datos en tránsito.</p>
+                
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6; font-weight: bold;">secure</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">var</span> password = <span style="color: #ce9178;">"clave_secreta_77"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;db.save(password) <span style="color: #6a9955;">// Encriptación automática en la DB</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"Guardando: {password}"</span> <span style="color: #6a9955;">// Imprime ********</span><br>
+                    <span style="color: #569cd6; font-weight: bold;">end</span>
+                </div>
+
+                
+
+                <h2>2. Control de Visualización Manual</h2>
+                <p>Si necesitas depurar una variable sensible, puedes forzar su visualización desactivando el cifrado de salida mediante metadatos en la interpolación.</p>
+
+                <div style="background: #1e1e1e; color: white; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace; border: 1px solid var(--border); margin: 20px 0;">
+                    <span style="color: #569cd6;">out</span> <span style="color: #ce9178;">"{password, encrypted: false}"</span> <span style="color: #6a9955;">// Muestra el valor real</span>
+                </div>
+
+                <h2>3. Aislamiento de Secretos</h2>
+                <p>Las variables declaradas dentro de un bloque <code>secure</code> tienen un tiempo de vida restringido y se limpian de la memoria volátil (RAM) inmediatamente después de que el puntero de ejecución sale del bloque, previniendo ataques de lectura de memoria.</p>
+
+                <div style="margin-top: 40px; padding: 20px; background: rgba(244, 67, 54, 0.1); border-radius: 12px; border: 1px solid #f44336;">
+                    <h4 style="margin-top: 0; color: #f44336;"><i class="fa-solid fa-lock"></i> Protección Anti-Leak</h4>
+                    <p style="margin: 0; font-size: 0.9em;">Incluso si un atacante logra acceso a los logs del servidor, cualquier salida generada bajo el modo <code>secure</code> estará ofuscada por defecto, reduciendo el riesgo de exposición de credenciales.</p>
+                </div>
+
+                <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="docs-memoria.html" style="text-decoration: none; color: var(--primary);"><i class="fa-solid fa-arrow-left"></i> Anterior: Gestión de Memoria</a>
+                    <a href="docs-red.html" style="text-decoration: none; color: var(--primary); font-weight: bold;">Siguiente: Manejo de Red <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Iridium Language Project | Designed by zxkiidev
+    </footer>
+
+</body>
+</html>

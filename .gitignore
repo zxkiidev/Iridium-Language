@@ -8,6 +8,7 @@ venv/
 # Iridium Environment
 .env
 *.log
+src/
 
 # VS Code
 .vscode/
