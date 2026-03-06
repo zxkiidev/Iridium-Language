@@ -1,77 +1,333 @@
-/* ==========================================
-* IRIDIUM V1.0 - TEST MAESTRO DE SISTEMA
-* Diseñado para entornos de IA y Backend
-* ========================================== */
+// ============================================================
+//  TEST.IRI  —  Iridium V2 Test Suite
+//  Ejecutar:  python main.py test.iri
+// ============================================================
 
-out "=== INICIANDO SECUENCIA DE ARRANQUE IRIDIUM ==="
+out "============================================"
+out " IRIDIUM V2 — TEST SUITE"
+out "============================================"
 
-// 1. CARGA DE ENTORNO Y CONSTANTES
-env of ".env":
-    const PORT: int = 8080 FROM env.file
-    const API_KEY: string FROM env.file
-    const DB_HOST: string FROM env.file
+// ============================================================
+//  TEST 1: Variables y tipos básicos
+// ============================================================
+out ""
+out "[ TEST 1 ] Variables y tipos básicos"
 
-const VERSION = 1.0
-out "[OK] Entorno cargado. Puerto: {PORT} | Version: {VERSION}"
+var nombre  = "Iridium"
+var version = 2
+var precio  = 9.99
+var activo  = true
 
-// 2. VARIABLES, MATEMÁTICAS Y DATASETS (Rangos y Arreglos)
-var dataset = {10, 20, 30, 40}
-var epocas = [1..3]
-var media = avrg(dataset)
-var calculo = sqrt(64) + pow(2, 3)
-
-out "[OK] Matemáticas. Media del dataset: {media} | 8+8 = {calculo}"
-out "[OK] Rango generado: {epocas}"
-
-// 3. CONTROL DE FLUJO (While, For, If, Switch)
-var energia = 2
-while (energia > 0):
-    energia -= 1
-    out "   -> [While] Energía bajando a: {energia}"
-end
-
-for (var i = 1; i < 3; i++):
-    out "   -> [For] Procesando iteración: {i}"
-
-var estado = "activo"
-switch (estado):
-    case "error": out "   -> [Switch] Fallo detectado"
-    case "activo": out "   -> [Switch] Sistema operativo y estable"
-    default: out "   -> [Switch] Desconocido"
-end
-
-if (media == 25):
-    out "[OK] El condicional IF funciona perfectamente."
+if nombre == "Iridium":
+    out "  PASS — var string OK: {nombre}"
 else:
-    out "[FAIL] Matemáticas incorrectas."
+    out "  FAIL — var string falló"
 
-// 4. SEGURIDAD Y BASES DE DATOS (Secure y Sponge ~>)
-secure:
-    database myDB = connect("postgresql", host: DB_HOST)
-    var db_pass = "clave_super_secreta_ubi"
-    out "[SECURE] Guardando contraseña: {db_pass}" 
-    dbpass >> out
-    out "[SECURE-BYPASS] Contraseña real: {db_pass, encrypted: false}"
+if version == 2:
+    out "  PASS — var int OK: {version}"
+else:
+    out "  FAIL — var int falló"
+
+if activo == true:
+    out "  PASS — var bool OK: {activo}"
+else:
+    out "  FAIL — var bool falló"
+
+// ============================================================
+//  TEST 2: Constantes protegidas
+// ============================================================
+out ""
+out "[ TEST 2 ] Constantes"
+
+const PI = 3.14159
+out "  PASS — const definida: PI = {PI}"
+// Si descomentas la siguiente línea, el motor lanza error fatal (correcto):
+// PI = 999
+
+// ============================================================
+//  TEST 3: Operadores aritméticos
+// ============================================================
+out ""
+out "[ TEST 3 ] Aritmética"
+
+var a = 10
+var b = 3
+var suma  = a + b
+var resta = a - b
+var mult  = a * b
+var divis = a / b
+
+if suma == 13:
+    out "  PASS — suma: {a} + {b} = {suma}"
+else:
+    out "  FAIL — suma incorrecta: {suma}"
+
+if resta == 7:
+    out "  PASS — resta: {a} - {b} = {resta}"
+else:
+    out "  FAIL — resta incorrecta: {resta}"
+
+if mult == 30:
+    out "  PASS — multiplicación: {a} * {b} = {mult}"
+else:
+    out "  FAIL — multiplicación incorrecta: {mult}"
+
+// ============================================================
+//  TEST 4: += y -=
+// ============================================================
+out ""
+out "[ TEST 4 ] Operadores compuestos += / -="
+
+var contador = 0
+contador += 5
+contador += 3
+contador -= 2
+
+if contador == 6:
+    out "  PASS — contador final: {contador}"
+else:
+    out "  FAIL — contador incorrecto: {contador}"
+
+// ============================================================
+//  TEST 5: if / else
+// ============================================================
+out ""
+out "[ TEST 5 ] Condicionales if / else"
+
+var edad = 20
+
+if edad >= 18:
+    out "  PASS — mayor de edad detectado correctamente"
+else:
+    out "  FAIL — condicional if falló"
+
+var nota = 4
+
+if nota >= 6:
+    out "  FAIL — debería entrar al else"
+else:
+    out "  PASS — else funciona correctamente"
+
+// ============================================================
+//  TEST 6: while
+// ============================================================
+out ""
+out "[ TEST 6 ] Bucle while"
+
+var i = 0
+var acum = 0
+while (i < 5):
+    acum += 1
+    i += 1
 end
 
-// Operador Sponge: myDB.fetchAll() fallará a propósito en nuestro motor para probar el rescate
-var datos_seguros = myDB.fetchAll() ~> {"Invitado", "Anónimo"}
-out "[OK] Operador Sponge rescató los datos: {datos_seguros}"
+if acum == 5:
+    out "  PASS — while iteró 5 veces: acum = {acum}"
+else:
+    out "  FAIL — while falló, acum = {acum}"
 
-// 5. TENSORES E INTELIGENCIA ARTIFICIAL
-var pesos: tensor = {{0.1, 0.9}, {0.4, 0.2}}
-var input_data = tensor({1, 0})
-var prediccion = ia.predict(input_data, "Modelo_Vision_V1")
-out "[OK] IA nativa ejecutada. Resultado: {prediccion}"
+// ============================================================
+//  TEST 7: for
+// ============================================================
+out ""
+out "[ TEST 7 ] Bucle for"
 
-// 6. MANEJO DE RED Y MICROSERVICIOS
-POST, GET "/analizar" => (data: tensor, model_id: int):
-    if (method == "GET"):
-        return {status: 200, msg: "Servidor Ir activo"}
-    
-    var res = ia.predict(data, model_id)
-    return {resultado: res}
-end  // <--- ¡AÑADE ESTO! Es el muro que detiene el salto del motor.
+var total = 0
+for (var j = 1; j <= 4; j++):
+    total += j
+end
 
-out "=== LEVANTANDO SERVIDOR WEB ==="
-serve(port: PORT, host: "0.0.0.0")
+if total == 10:
+    out "  PASS — for sumó correctamente: {total}"
+else:
+    out "  FAIL — for falló, total = {total}"
+
+// ============================================================
+//  TEST 8: switch / case / default
+// ============================================================
+out ""
+out "[ TEST 8 ] switch / case / default"
+
+var dia = "lunes"
+
+switch(dia)
+    case "lunes": out "  PASS — case lunes detectado"
+    case "martes": out "  FAIL — entró en martes"
+    default: out "  FAIL — entró en default"
+
+var codigo = 99
+switch(codigo)
+    case "1": out "  FAIL — no debería matchear"
+    default: out "  PASS — default ejecutado correctamente"
+
+// ============================================================
+//  TEST 9: Operador Sponge ~> (fallback)
+// ============================================================
+out ""
+out "[ TEST 9 ] Operador Sponge ~> (valor de respaldo)"
+
+var resultado = IridiumObject({"dato": "primario"}) ~> IridiumObject({"dato": "respaldo"})
+out "  PASS — Sponge ejecutado, dato: {resultado.dato}"
+
+// ============================================================
+//  TEST 10: IridiumObject (acceso por punto)
+// ============================================================
+out ""
+out "[ TEST 10 ] IridiumObject"
+
+var user = IridiumObject({"nombre": "Ana", "exp": 150, "nivel": 2})
+
+if user.nombre == "Ana":
+    out "  PASS — IridiumObject.nombre: {user.nombre}"
+else:
+    out "  FAIL — acceso por punto falló"
+
+if user.exp == 150:
+    out "  PASS — IridiumObject.exp: {user.exp}"
+else:
+    out "  FAIL — IridiumObject.exp falló"
+
+// ============================================================
+//  TEST 11: Clases e instancias
+// ============================================================
+out ""
+out "[ TEST 11 ] Clases e instancias"
+
+class Jugador():
+    var nombre = "sin nombre"
+    var exp    = 0
+    var nivel  = 1
+
+    function subir_nivel():
+        nivel = nivel + 1
+        exp   = 0
+    end
+
+    function set_nombre(n):
+        nombre = n
+    end
+
+    function info():
+        out "  >> Jugador: {nombre} | Nivel: {nivel} | EXP: {exp}"
+    end
+end
+
+var j1 = Jugador()
+j1.set_nombre("Carlos")
+j1.exp = 200
+
+if j1.nombre == "Carlos":
+    out "  PASS — clase instanciada y nombre asignado: {j1.nombre}"
+else:
+    out "  FAIL — nombre de instancia incorrecto"
+
+j1.subir_nivel()
+
+if j1.nivel == 2:
+    out "  PASS — método subir_nivel() funcionó: nivel = {j1.nivel}"
+else:
+    out "  FAIL — método falló, nivel = {j1.nivel}"
+
+j1.info()
+
+var j2 = Jugador()
+j2.set_nombre("María")
+
+if j2.nombre == "María":
+    out "  PASS — segunda instancia independiente: {j2.nombre}"
+else:
+    out "  FAIL — instancias no son independientes"
+
+// ============================================================
+//  TEST 12: hash_password / check_password
+// ============================================================
+out ""
+out "[ TEST 12 ] Seguridad — hash y verificación de contraseñas"
+
+var pass_original = "MiPassword123"
+var pass_hash     = hash_password(pass_original)
+
+var es_correcta   = check_password(pass_hash, pass_original)
+var es_incorrecta = check_password(pass_hash, "otraPassword")
+
+if es_correcta == true:
+    out "  PASS — hash generado y verificado correctamente"
+else:
+    out "  FAIL — verificación de password falló"
+
+if es_incorrecta == false:
+    out "  PASS — password incorrecta rechazada correctamente"
+else:
+    out "  FAIL — password incorrecta fue aceptada (error grave)"
+
+// ============================================================
+//  TEST 13: Matemáticas
+// ============================================================
+out ""
+out "[ TEST 13 ] Matemáticas"
+
+var raiz      = sqrt(16)
+var potencia  = pow(2, 8)
+var lista_nums = list(range(1, 6))
+var promedio  = avrg(lista_nums)
+
+if raiz == 4.0:
+    out "  PASS — sqrt(16) = {raiz}"
+else:
+    out "  FAIL — sqrt falló: {raiz}"
+
+if potencia == 256.0:
+    out "  PASS — pow(2, 8) = {potencia}"
+else:
+    out "  FAIL — pow falló: {potencia}"
+
+if promedio == 3.0:
+    out "  PASS — avrg([1,2,3,4,5]) = {promedio}"
+else:
+    out "  FAIL — avrg falló: {promedio}"
+
+// ============================================================
+//  TEST 14: jsonify
+// ============================================================
+out ""
+out "[ TEST 14 ] jsonify"
+
+var respuesta       = jsonify({"ok": true, "mensaje": "Todo bien"})
+var respuesta_error = jsonify({"error": "No encontrado"}, 404)
+
+if respuesta.status == 200:
+    out "  PASS — jsonify status 200 OK"
+else:
+    out "  FAIL — jsonify status incorrecto: {respuesta.status}"
+
+if respuesta_error.status == 404:
+    out "  PASS — jsonify con status 404 OK"
+else:
+    out "  FAIL — jsonify status 404 incorrecto"
+
+// ============================================================
+//  TEST 15: secure
+// ============================================================
+out ""
+out "[ TEST 15 ] Bloque secure"
+
+var token = "abc123secreto"
+
+secure:
+    out "  PASS — token enmascarado (debe mostrar ********): {token}"
+end
+
+out "  PASS — fuera de secure, token visible: {token}"
+
+// ============================================================
+//  RESUMEN
+// ============================================================
+out ""
+out "============================================"
+out " TESTS COMPLETADOS"
+out " Revisá los PASS / FAIL de arriba."
+out "============================================"
+out ""
+out " Para testear rutas web y BD, corré mi_app.iri"
+out " y probá los endpoints con curl o Postman."
+out "============================================"

@@ -1,6 +1,7 @@
 # Python
 __pycache__/
 *.py[cod]
+mario*.py
 *$py.class
 venv/
 .venv/
@@ -9,6 +10,7 @@ venv/
 .env
 *.log
 src/
+\src
 
 # VS Code
 .vscode/
