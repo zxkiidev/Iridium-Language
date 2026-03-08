@@ -5,6 +5,7 @@ mario*.py
 *$py.class
 venv/
 .venv/
+main.py
 
 # Iridium Environment
 .env
