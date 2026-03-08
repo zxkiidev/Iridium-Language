@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Uso de VS Code | Documentación Iridium</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <strong><a href="../index.html">IRIDIUM</a></strong>
+      </div>
+      <div class="menu">
+        <a href="../docs.html">Docs</a>
+        <a href="../downloads.html">Downloads</a>
+        <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank"
+          >GitHub</a
+        >
+        <a href="../extension.html" class="btn-nav-primary"
+          ><i class="fab fa-microsoft"></i> VS Code Extension</a
+        >
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside>
+        <div class="side-group">
+          <h4>🟢 El Despegue</h4>
+          <a href="docs-manifiesto.html" class="side-item"
+            >Manifiesto Iridium</a
+          >
+          <a href="docs-instalacion.html" class="side-item"
+            >Instalación Avanzada</a
+          >
+          <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+          <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+          <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🟡 Lógica de Servidor</h4>
+          <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+          <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+          <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+          <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+          <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🔴 Núcleo e IA</h4>
+          <a href="docs-red.html" class="side-item">Manejo de Red</a>
+          <a href="docs-db.html" class="side-item">Bases de Datos</a>
+          <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+          <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+          <a href="docs-optimizacion.html" class="side-item"
+            >Optimización Backend</a
+          >
+        </div>
+
+        <div class="side-group">
+          <h4>📚 Referencia Libs</h4>
+          <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+          <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+          <a href="lib-time.html" class="side-item">Lib-Time</a>
+          <a href="lib-network.html" class="side-item">Lib-Network</a>
+        </div>
+
+        <div class="side-group">
+          <h4>⚙️ Ecosistema</h4>
+          <a href="docs-extension.html" class="side-item active-item"
+            >Uso de VS Code</a
+          >
+          <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+          <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+          <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+        </div>
+      </aside>
+
+      <main>
+        <section class="doc-section">
+          <span
+            style="
+              color: var(--primary);
+              font-weight: bold;
+              text-transform: uppercase;
+              font-size: 0.8em;
+            "
+            >Ecosistema: Archivo 1</span
+          >
+          <h1>Extensión Oficial para VS Code</h1>
+
+          <p>
+            La extensión oficial de Iridium para Visual Studio Code transforma
+            tu editor en un entorno completo para desarrollar scripts
+            <code>.iri</code>. Cero configuración, funciona desde el primer
+            archivo que abras.
+          </p>
+
+          <hr style="border: 0.5px solid var(--border); margin: 30px 0" />
+
+          <h2>1. Instalación</h2>
+          <p>
+            Puedes instalar la extensión directamente desde el Marketplace de VS
+            Code o desde la página oficial del proyecto:
+          </p>
+          <ul>
+            <li>
+              Abre VS Code y ve a la pestaña
+              <strong>Extensiones</strong> (<code>Ctrl+Shift+X</code>).
+            </li>
+            <li>Busca <strong>"Iridium Language"</strong> en el buscador.</li>
+            <li>
+              Haz clic en <strong>Instalar</strong>. No requiere reinicio.
+            </li>
+          </ul>
+          <p>
+            Alternativamente, puedes instalarla desde la página de la extensión
+            pulsando el botón <strong>"VS Code Extension"</strong> en la barra
+            de navegación superior.
+          </p>
+
+          <h2>2. Resaltado de Sintaxis</h2>
+          <p>
+            La extensión reconoce automáticamente los archivos
+            <code>.iri</code> y aplica un esquema de colores que distingue
+            visualmente:
+          </p>
+
+          <div
+            style="
+              background: #1e1e1e;
+              color: white;
+              padding: 20px;
+              border-radius: 12px;
+              font-family: &quot;Consolas&quot;, monospace;
+              border: 1px solid var(--border);
+              margin: 20px 0;
+              line-height: 1.9;
+            "
+          >
+            <span style="color: #569cd6">const</span> UMBRAL:
+            <span style="color: #4ec9b0">float</span> =
+            <span style="color: #b5cea8">0.85</span> &nbsp;<span
+              style="color: #6a9955"
+              >// Palabras clave → azul</span
+            ><br />
+            <span style="color: #569cd6">var</span> nombre =
+            <span style="color: #ce9178">"Iridium"</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+              style="color: #6a9955"
+              >// Strings → naranja</span
+            ><br />
+            <span style="color: #569cd6">var</span> epoca:
+            <span style="color: #4ec9b0">int</span> =
+            <span style="color: #b5cea8">100</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+              style="color: #6a9955"
+              >// Tipos → verde agua</span
+            ><br />
+            <span style="color: #dcdcaa">avrg</span>(datos)
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+              style="color: #6a9955"
+              >// Funciones → amarillo</span
+            >
+          </div>
+
+          <h2>3. Autocompletado Inteligente</h2>
+          <p>
+            Al escribir en un archivo <code>.iri</code>, la extensión sugiere
+            automáticamente:
+          </p>
+          <ul>
+            <li>
+              Todas las <strong>palabras clave</strong> del lenguaje
+              (<code>var</code>, <code>const</code>, <code>route</code>,
+              <code>secure</code>, etc.)
+            </li>
+            <li>
+              Los <strong>métodos del objeto <code>db</code></strong
+              >: al escribir <code>db.</code> aparecen <code>query</code>,
+              <code>exec</code>, <code>query_one</code>, etc.
+            </li>
+            <li>
+              Los <strong>métodos de <code>math</code></strong> e
+              <strong><code>ia</code></strong> de forma contextual.
+            </li>
+            <li>
+              Las <strong>variables definidas</strong> en el mismo archivo.
+            </li>
+          </ul>
+
+          <h2>4. Ejecución con Atajo de Teclado</h2>
+          <p>
+            Una vez instalada la extensión y configurado el motor en el PATH,
+            puedes ejecutar el archivo <code>.iri</code> activo directamente
+            desde VS Code:
+          </p>
+
+          <div
+            style="
+              background: #000;
+              color: rgb(6, 221, 6);
+              padding: 20px;
+              border-radius: 12px;
+              font-family: &quot;Courier New&quot;, monospace;
+              margin: 20px 0;
+            "
+          >
+            <span style="color: #666"
+              ># Atajo de teclado (configurable en keybindings.json):</span
+            ><br />
+            Ctrl + Shift + B &nbsp;&nbsp;→ &nbsp;iridium main.iri<br />
+            <span style="color: #fff"
+              >🚀 [Iridium Web] Escuchando en http://0.0.0.0:8080</span
+            >
+          </div>
+
+          <h2>5. Snippets Disponibles</h2>
+          <p>
+            La extensión incluye snippets de código para las estructuras más
+            comunes. Escribe el prefijo y pulsa <kbd>Tab</kbd>:
+          </p>
+
+          <table
+            style="
+              width: 100%;
+              border-collapse: collapse;
+              margin: 20px 0;
+              background: var(--card-bg);
+              border-radius: 8px;
+              overflow: hidden;
+              border: 1px solid var(--border);
+            "
+          >
+            <thead>
+              <tr
+                style="background: rgba(255, 255, 255, 0.05); text-align: left"
+              >
+                <th style="padding: 12px 16px; font-size: 0.9em">Prefijo</th>
+                <th style="padding: 12px 16px; font-size: 0.9em">Genera</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-top: 1px solid var(--border)">
+                <td
+                  style="
+                    padding: 12px 16px;
+                    font-family: monospace;
+                    color: var(--primary);
+                  "
+                >
+                  iroute
+                </td>
+                <td style="padding: 12px 16px; font-size: 0.9em">
+                  Bloque <code>route "/ruta" => "GET": ... end</code>
+                </td>
+              </tr>
+              <tr style="border-top: 1px solid var(--border)">
+                <td
+                  style="
+                    padding: 12px 16px;
+                    font-family: monospace;
+                    color: var(--primary);
+                  "
+                >
+                  irclass
+                </td>
+                <td style="padding: 12px 16px; font-size: 0.9em">
+                  Estructura de <code>class Nombre(): ... end</code>
+                </td>
+              </tr>
+              <tr style="border-top: 1px solid var(--border)">
+                <td
+                  style="
+                    padding: 12px 16px;
+                    font-family: monospace;
+                    color: var(--primary);
+                  "
+                >
+                  irsecure
+                </td>
+                <td style="padding: 12px 16px; font-size: 0.9em">
+                  Bloque <code>secure: ... end</code>
+                </td>
+              </tr>
+              <tr style="border-top: 1px solid var(--border)">
+                <td
+                  style="
+                    padding: 12px 16px;
+                    font-family: monospace;
+                    color: var(--primary);
+                  "
+                >
+                  irenv
+                </td>
+                <td style="padding: 12px 16px; font-size: 0.9em">
+                  Bloque <code>env of ".env": ... </code>
+                </td>
+              </tr>
+              <tr style="border-top: 1px solid var(--border)">
+                <td
+                  style="
+                    padding: 12px 16px;
+                    font-family: monospace;
+                    color: var(--primary);
+                  "
+                >
+                  irapi
+                </td>
+                <td style="padding: 12px 16px; font-size: 0.9em">
+                  Plantilla completa de API con db, route y serve
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div
+            style="
+              margin-top: 40px;
+              padding: 20px;
+              background: rgba(33, 150, 243, 0.1);
+              border-radius: 12px;
+              border: 1px solid #2196f3;
+            "
+          >
+            <h4 style="margin-top: 0; color: #2196f3">
+              <i class="fab fa-microsoft"></i> Compatibilidad
+            </h4>
+            <p style="margin: 0; font-size: 0.9em">
+              La extensión es compatible con VS Code 1.80 o superior en Windows,
+              macOS y Linux. Se actualiza automáticamente junto con el motor
+              principal de Iridium.
+            </p>
+          </div>
+
+          <div
+            style="
+              margin-top: 50px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <a
+              href="docs-optimizacion.html"
+              style="text-decoration: none; color: var(--primary)"
+              ><i class="fa-solid fa-arrow-left"></i> Anterior: Optimización
+              Backend</a
+            >
+            <a
+              href="docs-errores.html"
+              style="
+                text-decoration: none;
+                color: var(--primary);
+                font-weight: bold;
+              "
+              >Siguiente: Errores Comunes <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>&copy; 2026 Iridium Language Project | Designed by zxkiidev</footer>
+  </body>
+</html>

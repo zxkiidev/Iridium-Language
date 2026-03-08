@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Glosario Técnico | Documentación Iridium</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <strong><a href="../index.html">IRIDIUM</a></strong>
+      </div>
+      <div class="menu">
+        <a href="../docs.html">Docs</a>
+        <a href="../downloads.html">Downloads</a>
+        <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank"
+          >GitHub</a
+        >
+        <a href="../extension.html" class="btn-nav-primary"
+          ><i class="fab fa-microsoft"></i> VS Code Extension</a
+        >
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside>
+        <div class="side-group">
+          <h4>🟢 El Despegue</h4>
+          <a href="docs-manifiesto.html" class="side-item"
+            >Manifiesto Iridium</a
+          >
+          <a href="docs-instalacion.html" class="side-item"
+            >Instalación Avanzada</a
+          >
+          <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+          <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+          <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🟡 Lógica de Servidor</h4>
+          <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+          <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+          <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+          <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+          <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🔴 Núcleo e IA</h4>
+          <a href="docs-red.html" class="side-item">Manejo de Red</a>
+          <a href="docs-db.html" class="side-item">Bases de Datos</a>
+          <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+          <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+          <a href="docs-optimizacion.html" class="side-item"
+            >Optimización Backend</a
+          >
+        </div>
+
+        <div class="side-group">
+          <h4>📚 Referencia Libs</h4>
+          <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+          <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+          <a href="lib-time.html" class="side-item">Lib-Time</a>
+          <a href="lib-network.html" class="side-item">Lib-Network</a>
+        </div>
+
+        <div class="side-group">
+          <h4>⚙️ Ecosistema</h4>
+          <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+          <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+          <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+          <a href="docs-glosario.html" class="side-item active-item"
+            >Glosario Técnico</a
+          >
+        </div>
+      </aside>
+
+      <main>
+        <section class="doc-section">
+          <span
+            style="
+              color: var(--primary);
+              font-weight: bold;
+              text-transform: uppercase;
+              font-size: 0.8em;
+            "
+            >Ecosistema: Archivo 4</span
+          >
+          <h1>Glosario Técnico</h1>
+
+          <p>
+            Referencia rápida de todos los términos, palabras clave y operadores
+            del lenguaje Iridium. Ordenados alfabéticamente para consulta ágil.
+          </p>
+
+          <hr style="border: 0.5px solid var(--border); margin: 30px 0" />
+
+          <div style="display: grid; gap: 16px; margin: 20px 0">
+            <!-- ENTRY -->
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >await</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Captura de entrada del usuario.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Pausa la ejecución hasta que el usuario introduce un valor.
+                  Compatible con tipado:
+                  <code>var edad: int = await "Edad: "</code>
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >avrg()</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Función de media aritmética.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Calcula el promedio de una colección o <code>dataset</code>.
+                  Disponible globalmente sin imports.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >check_password()</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Verificación de contraseña hasheada.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Compara una contraseña en texto plano contra su hash
+                  almacenado. Retorna <code>true</code> o <code>false</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >class</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Definición de clase y objeto.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Permite crear tipos personalizados con campos
+                  (<code>var</code>) y métodos (<code>function</code>). Se
+                  cierra con <code>end</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >const</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Variable inmutable.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Una vez asignada, no puede modificarse. Reasignarla provoca
+                  <code>Ir-Error: Inmutable violation</code> y detiene la
+                  ejecución.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >cronos</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Tipo de dato temporal.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Variable especial para datos que se actualizan periódicamente
+                  (sensores, streams). Planificado para implementación completa
+                  en V2.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >dataset</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Estructura de datos para IA.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Colección inmutable y comprimida en memoria, optimizada para
+                  operaciones matemáticas vectorizadas. Compatible con
+                  <code>avrg()</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >db</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Objeto global de base de datos.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Métodos: <code>db.config()</code>, <code>db.sqlite()</code>,
+                  <code>db.query()</code>, <code>db.query_one()</code>,
+                  <code>db.exec()</code>, <code>db.create_table()</code>,
+                  <code>db.init()</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >end</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Cierre de bloque explícito.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Cierra los bloques: <code>while</code>, <code>for</code>,
+                  <code>switch</code>, <code>secure</code>, <code>class</code>,
+                  <code>function</code>, <code>route</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >env</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Cargador de variables de entorno.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  <code>env of ".env":</code> carga el archivo al inicio. Las
+                  variables se mapean a constantes con
+                  <code>FROM env.file</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >function</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Definición de método en clase.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Sintaxis: <code>function nombre(param1, param2):</code>. Solo
+                  válido dentro de un bloque <code>class</code>. Se cierra con
+                  <code>end</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >hash_password()</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Hashing seguro de contraseñas.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Genera un hash seguro (Werkzeug/PBKDF2) de un texto. Úsalo
+                  antes de guardar contraseñas en la base de datos.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >html()</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Respuesta HTML desde una ruta.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Retorna una respuesta HTTP con
+                  <code>Content-Type: text/html</code>. Acepta código de estado
+                  opcional: <code>html(contenido, 404)</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >ia</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Objeto global de inferencia.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Expone <code>ia.predict(tensor, model_id)</code> para ejecutar
+                  predicciones. El motor gestiona el threading de inferencia
+                  internamente.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >jsonify()</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Respuesta JSON desde una ruta.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Serializa un objeto a JSON con
+                  <code>Content-Type: application/json</code>. Acepta estado
+                  HTTP: <code>jsonify({error: "msg"}, 401)</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >math</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Objeto global de matemáticas.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Proporciona: <code>math.sqrt()</code>,
+                  <code>math.pow()</code>, <code>math.floor()</code>,
+                  <code>math.ceil()</code>, <code>math.abs()</code>,
+                  <code>math.pi</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >out</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Instrucción de salida estándar.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Imprime en consola con interpolación de variables mediante
+                  <code>{nombre}</code>. Dentro de <code>secure:</code>, los
+                  valores se enmascaran como <code>********</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >route</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Declaración de endpoint HTTP.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Sintaxis: <code>route "/ruta" => "MÉTODO":</code>. Inyecta
+                  automáticamente <code>body</code>, <code>params</code> y
+                  <code>path_params</code>. Se cierra con <code>end</code>.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >secure</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Bloque de seguridad.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Todo lo ejecutado dentro activa encriptación en tránsito y
+                  ofusca las salidas <code>out</code>. Las variables se limpian
+                  de RAM al salir del bloque.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >serve()</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Inicia el servidor HTTP.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Lanza el servidor en el puerto indicado:
+                  <code>serve(8080)</code>. Bloquea la ejecución hasta Ctrl+C.
+                  Gestiona multi-threading automáticamente.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >tensor</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Tipo de dato matricial.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Matrices multidimensionales con aritmética directa (<code
+                    >a * b</code
+                  >
+                  opera elemento a elemento). Las operaciones se paralelizan
+                  automáticamente en CPU.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >var</code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Declaración de variable.</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Modo dinámico por defecto. Puede tipearse:
+                  <code>var x: int = 5</code>. Reasignable en cualquier momento.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >~></code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Operador Sponge (valor de respaldo).</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Si la expresión de la izquierda falla o lanza error, asigna el
+                  valor de la derecha. Evita excepciones en operaciones
+                  externas.
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 16px;
+                align-items: start;
+                padding: 16px;
+                background: var(--card-bg);
+                border-radius: 10px;
+                border: 1px solid var(--border);
+              "
+            >
+              <code
+                style="
+                  color: var(--primary);
+                  font-size: 1em;
+                  font-weight: bold;
+                  padding-top: 2px;
+                "
+                >>></code
+              >
+              <div>
+                <p style="margin: 0 0 4px 0; font-size: 0.95em">
+                  <strong>Operador Pipe (redirección).</strong>
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 0.85em;
+                    color: var(--text-secondary);
+                  "
+                >
+                  Redirige la salida de una expresión. Uso actual:
+                  <code>variable >> out</code> para imprimir el valor
+                  directamente al log de depuración.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 50px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <a
+              href="docs-roadmap.html"
+              style="text-decoration: none; color: var(--primary)"
+              ><i class="fa-solid fa-arrow-left"></i> Anterior: Roadmap</a
+            >
+            <a
+              href="docs-manifiesto.html"
+              style="
+                text-decoration: none;
+                color: var(--primary);
+                font-weight: bold;
+              "
+              >Volver al inicio <i class="fa-solid fa-house"></i
+            ></a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>&copy; 2026 Iridium Language Project | Designed by zxkiidev</footer>
+  </body>
+</html>

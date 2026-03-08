@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Roadmap V2 y V3 | Documentación Iridium</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <strong><a href="../index.html">IRIDIUM</a></strong>
+      </div>
+      <div class="menu">
+        <a href="../docs.html">Docs</a>
+        <a href="../downloads.html">Downloads</a>
+        <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank"
+          >GitHub</a
+        >
+        <a href="../extension.html" class="btn-nav-primary"
+          ><i class="fab fa-microsoft"></i> VS Code Extension</a
+        >
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside>
+        <div class="side-group">
+          <h4>🟢 El Despegue</h4>
+          <a href="docs-manifiesto.html" class="side-item"
+            >Manifiesto Iridium</a
+          >
+          <a href="docs-instalacion.html" class="side-item"
+            >Instalación Avanzada</a
+          >
+          <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+          <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+          <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🟡 Lógica de Servidor</h4>
+          <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+          <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+          <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+          <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+          <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🔴 Núcleo e IA</h4>
+          <a href="docs-red.html" class="side-item">Manejo de Red</a>
+          <a href="docs-db.html" class="side-item">Bases de Datos</a>
+          <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+          <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+          <a href="docs-optimizacion.html" class="side-item"
+            >Optimización Backend</a
+          >
+        </div>
+
+        <div class="side-group">
+          <h4>📚 Referencia Libs</h4>
+          <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+          <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+          <a href="lib-time.html" class="side-item">Lib-Time</a>
+          <a href="lib-network.html" class="side-item">Lib-Network</a>
+        </div>
+
+        <div class="side-group">
+          <h4>⚙️ Ecosistema</h4>
+          <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+          <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+          <a href="docs-roadmap.html" class="side-item active-item"
+            >Roadmap (V2 y V3)</a
+          >
+          <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+        </div>
+      </aside>
+
+      <main>
+        <section class="doc-section">
+          <span
+            style="
+              color: var(--primary);
+              font-weight: bold;
+              text-transform: uppercase;
+              font-size: 0.8em;
+            "
+            >Ecosistema: Archivo 3</span
+          >
+          <h1>Roadmap: V2 y V3</h1>
+
+          <p>
+            Iridium V1 es el punto de partida: un motor interpretado en Python
+            que ya permite construir APIs completas, trabajar con bases de datos
+            y ejecutar operaciones de ciencia de datos. Pero esto es solo el
+            comienzo.
+          </p>
+
+          <hr style="border: 0.5px solid var(--border); margin: 30px 0" />
+
+          <!-- V1 actual -->
+          <div
+            style="
+              margin: 30px 0;
+              padding: 25px;
+              border-radius: 16px;
+              border: 1px solid #4ade80;
+              background: rgba(74, 222, 128, 0.05);
+              position: relative;
+            "
+          >
+            <span
+              style="
+                position: absolute;
+                top: -12px;
+                left: 20px;
+                background: #4ade80;
+                color: #000;
+                font-size: 0.75em;
+                font-weight: bold;
+                padding: 2px 12px;
+                border-radius: 20px;
+              "
+              >ACTUAL</span
+            >
+            <h2 style="color: #4ade80; margin-top: 0">
+              <i class="fa-solid fa-circle-check"></i> V1 — Intérprete Nativo
+              (Python)
+            </h2>
+            <p style="font-size: 0.95em">
+              El motor actual traduce y ejecuta código <code>.iri</code> en
+              tiempo real sobre Python. Ofrece la experiencia completa del
+              lenguaje sin necesidad de compilación.
+            </p>
+            <ul style="font-size: 0.9em; line-height: 1.9; margin: 0">
+              <li>✅ Tipado híbrido (dinámico y estricto)</li>
+              <li>
+                ✅ Operador Sponge (<code>~></code>), I/O, colecciones y rangos
+              </li>
+              <li>
+                ✅ Control de flujo: <code>if/else</code>, <code>while</code>,
+                <code>for</code>, <code>switch</code>
+              </li>
+              <li>✅ Clases y objetos con métodos</li>
+              <li>
+                ✅ Sistema de rutas HTTP (<code>route</code> +
+                <code>serve</code>)
+              </li>
+              <li>✅ Base de datos nativa: MySQL y SQLite</li>
+              <li>✅ Bloque <code>secure</code> y <code>env</code></li>
+              <li>✅ Motor de tensores básico y objeto <code>ia</code></li>
+              <li>✅ Extensión oficial para VS Code</li>
+            </ul>
+          </div>
+
+          <!-- V2 -->
+          <div
+            style="
+              margin: 30px 0;
+              padding: 25px;
+              border-radius: 16px;
+              border: 1px solid #2196f3;
+              background: rgba(33, 150, 243, 0.05);
+              position: relative;
+            "
+          >
+            <span
+              style="
+                position: absolute;
+                top: -12px;
+                left: 20px;
+                background: #2196f3;
+                color: #fff;
+                font-size: 0.75em;
+                font-weight: bold;
+                padding: 2px 12px;
+                border-radius: 20px;
+              "
+              >EN DESARROLLO</span
+            >
+            <h2 style="color: #2196f3; margin-top: 0">
+              <i class="fa-solid fa-gear"></i> V2 — Compilación a Bytecode
+            </h2>
+            <p style="font-size: 0.95em">
+              La V2 elimina la dependencia de Python en producción. El código
+              <code>.iri</code> se compilará a un bytecode propio que ejecutará
+              una máquina virtual (VM) escrita en C, logrando un salto de
+              rendimiento significativo.
+            </p>
+            <ul style="font-size: 0.9em; line-height: 1.9; margin: 0">
+              <li>
+                🔵 Compilador <code>iricc</code>: <code>.iri</code> →
+                <code>.iribc</code> (bytecode Iridium)
+              </li>
+              <li>🔵 Stack Machine propia — sin dependencia de Python</li>
+              <li>🔵 Gestor de paquetes: <code>iripkg install nombre</code></li>
+              <li>
+                🔵 Soporte nativo para bases de datos vectoriales (para IA)
+              </li>
+              <li>🔵 Modelos de IA propios: archivos <code>.irimodel</code></li>
+              <li>🔵 Módulos importables: <code>import mi_modulo</code></li>
+              <li>🔵 Soporte multi-archivo de proyecto</li>
+              <li>🔵 Depurador interactivo con <code>iridium debug</code></li>
+            </ul>
+          </div>
+
+          <!-- V3 -->
+          <div
+            style="
+              margin: 30px 0;
+              padding: 25px;
+              border-radius: 16px;
+              border: 1px solid #9c27b0;
+              background: rgba(156, 39, 176, 0.05);
+              position: relative;
+            "
+          >
+            <span
+              style="
+                position: absolute;
+                top: -12px;
+                left: 20px;
+                background: #9c27b0;
+                color: #fff;
+                font-size: 0.75em;
+                font-weight: bold;
+                padding: 2px 12px;
+                border-radius: 20px;
+              "
+              >VISIÓN FUTURA</span
+            >
+            <h2 style="color: #9c27b0; margin-top: 0">
+              <i class="fa-solid fa-microchip"></i> V3 — Compilación Nativa
+              (LLVM)
+            </h2>
+            <p style="font-size: 0.95em">
+              La V3 representa la visión final de Iridium: un lenguaje compilado
+              a código máquina nativo mediante LLVM, con gestión de memoria
+              manual controlada y capacidad de entrenamiento distribuido de IA
+              sin frameworks externos.
+            </p>
+            <ul style="font-size: 0.9em; line-height: 1.9; margin: 0">
+              <li>
+                🟣 Backend LLVM: compilación a binario nativo
+                (<code>.exe</code>, ELF)
+              </li>
+              <li>🟣 Punteros seguros (sin segfaults involuntarios)</li>
+              <li>
+                🟣 Gestión manual de memoria con sintaxis <code>alloc</code> /
+                <code>free</code>
+              </li>
+              <li>🟣 Entrenamiento distribuido multi-nodo desde el lenguaje</li>
+              <li>🟣 Soporte GPU nativo (CUDA/ROCm) sin librerías externas</li>
+              <li>
+                🟣 Interoperabilidad con C/C++ mediante <code>extern</code>
+              </li>
+              <li>🟣 Compilación cruzada para ARM y WASM</li>
+            </ul>
+          </div>
+
+          <div
+            style="
+              margin-top: 40px;
+              padding: 20px;
+              background: rgba(255, 193, 7, 0.1);
+              border-radius: 12px;
+              border: 1px solid #ffc107;
+            "
+          >
+            <h4 style="margin-top: 0; color: #ffc107">
+              <i class="fa-brands fa-github"></i> Contribuye al Roadmap
+            </h4>
+            <p style="margin: 0; font-size: 0.9em">
+              El roadmap es público y abierto a propuestas. Si tienes ideas para
+              features que te gustaría ver en V2 o V3, abre una discusión en el
+              repositorio de GitHub con la etiqueta <code>roadmap</code>.
+            </p>
+          </div>
+
+          <div
+            style="
+              margin-top: 50px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <a
+              href="docs-errores.html"
+              style="text-decoration: none; color: var(--primary)"
+              ><i class="fa-solid fa-arrow-left"></i> Anterior: Errores
+              Comunes</a
+            >
+            <a
+              href="docs-glosario.html"
+              style="
+                text-decoration: none;
+                color: var(--primary);
+                font-weight: bold;
+              "
+              >Siguiente: Glosario Técnico
+              <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>&copy; 2026 Iridium Language Project | Designed by zxkiidev</footer>
+  </body>
+</html>

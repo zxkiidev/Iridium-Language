@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Integración con IA | Documentación Iridium</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <strong><a href="../index.html">IRIDIUM</a></strong>
+      </div>
+      <div class="menu">
+        <a href="../docs.html">Docs</a>
+        <a href="../downloads.html">Downloads</a>
+        <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank"
+          >GitHub</a
+        >
+        <a href="../extension.html" class="btn-nav-primary"
+          ><i class="fab fa-microsoft"></i> VS Code Extension</a
+        >
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside>
+        <div class="side-group">
+          <h4>🟢 El Despegue</h4>
+          <a href="docs-manifiesto.html" class="side-item"
+            >Manifiesto Iridium</a
+          >
+          <a href="docs-instalacion.html" class="side-item"
+            >Instalación Avanzada</a
+          >
+          <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+          <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+          <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🟡 Lógica de Servidor</h4>
+          <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+          <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+          <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+          <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+          <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🔴 Núcleo e IA</h4>
+          <a href="docs-red.html" class="side-item">Manejo de Red</a>
+          <a href="docs-db.html" class="side-item">Bases de Datos</a>
+          <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+          <a href="docs-ia-nativa.html" class="side-item active-item"
+            >Integración con IA</a
+          >
+          <a href="docs-optimizacion.html" class="side-item"
+            >Optimización Backend</a
+          >
+        </div>
+
+        <div class="side-group">
+          <h4>📚 Referencia Libs</h4>
+          <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+          <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+          <a href="lib-time.html" class="side-item">Lib-Time</a>
+          <a href="lib-network.html" class="side-item">Lib-Network</a>
+        </div>
+
+        <div class="side-group">
+          <h4>⚙️ Ecosistema</h4>
+          <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+          <a href="docs-errores.html" class="side-item">Errores Comunes</a>
+          <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+          <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+        </div>
+      </aside>
+
+      <main>
+        <section class="doc-section">
+          <span
+            style="
+              color: var(--primary);
+              font-weight: bold;
+              text-transform: uppercase;
+              font-size: 0.8em;
+            "
+            >Nivel 3: Archivo 4</span
+          >
+          <h1>Integración con IA Nativa</h1>
+
+          <p>
+            Iridium incorpora un objeto <code>ia</code> disponible de forma
+            global en cualquier script <code>.iri</code>. No necesitas importar
+            ninguna librería: el motor de inferencia está integrado directamente
+            en el núcleo del lenguaje.
+          </p>
+
+          <hr style="border: 0.5px solid var(--border); margin: 30px 0" />
+
+          <h2>1. El Objeto Global `ia`</h2>
+          <p>
+            El objeto <code>ia</code> expone los métodos de inferencia del
+            motor. Su función principal es <code>ia.predict()</code>, que toma
+            un <code>tensor</code> de entrada y un identificador de modelo.
+          </p>
+
+          <div
+            style="
+              background: #1e1e1e;
+              color: white;
+              padding: 20px;
+              border-radius: 12px;
+              font-family: &quot;Consolas&quot;, monospace;
+              border: 1px solid var(--border);
+              margin: 20px 0;
+            "
+          >
+            <span style="color: #6a9955"
+              >// Predicción básica con datos en memoria</span
+            ><br />
+            <span style="color: #569cd6">var</span> entrada:
+            <span style="color: #4ec9b0">tensor</span> = {{<span
+              style="color: #b5cea8"
+              >0.5</span
+            >, <span style="color: #b5cea8">0.3</span>}, {<span
+              style="color: #b5cea8"
+              >0.8</span
+            >, <span style="color: #b5cea8">0.1</span>}}<br />
+            <span style="color: #569cd6">var</span> resultado =
+            ia.predict(entrada, <span style="color: #b5cea8">1</span>)<br />
+            <span style="color: #569cd6">out</span>
+            <span style="color: #ce9178"
+              >"Predicción del modelo: {resultado}"</span
+            >
+          </div>
+
+          <h2>2. Predicción desde Base de Datos</h2>
+          <p>
+            El flujo más habitual en producción consiste en obtener datos de la
+            base de datos directamente como tensores y pasarlos al motor. El
+            método <code>db.fetchTensor()</code> realiza esta conversión
+            automáticamente.
+          </p>
+
+          <div
+            style="
+              background: #1e1e1e;
+              color: white;
+              padding: 20px;
+              border-radius: 12px;
+              font-family: &quot;Consolas&quot;, monospace;
+              border: 1px solid var(--border);
+              margin: 20px 0;
+            "
+          >
+            <span style="color: #569cd6">db</span>.config(<span
+              style="color: #ce9178"
+              >"localhost"</span
+            >, <span style="color: #ce9178">"root"</span>,
+            <span style="color: #ce9178">""</span>,
+            <span style="color: #ce9178">"mi_base"</span>)<br /><br />
+            <span style="color: #6a9955"
+              >// Obtener datos de imágenes como tensor</span
+            ><br />
+            <span style="color: #569cd6">var</span> input_data =
+            myDB.fetchTensor(<span style="color: #ce9178"
+              >"SELECT pixels FROM images WHERE set = 'test'"</span
+            >)<br />
+            <span style="color: #569cd6">var</span> prediccion =
+            ia.predict(input_data,
+            <span style="color: #b5cea8">42</span>)<br /><br />
+            <span style="color: #569cd6">out</span>
+            <span style="color: #ce9178">"Clase detectada: {prediccion}"</span>
+          </div>
+
+          <h2>3. Integración con Endpoints Web</h2>
+          <p>
+            Puedes combinar el motor de IA con el sistema de rutas para
+            construir una API de inferencia con pocas líneas de código:
+          </p>
+
+          <div
+            style="
+              background: #1e1e1e;
+              color: white;
+              padding: 20px;
+              border-radius: 12px;
+              font-family: &quot;Consolas&quot;, monospace;
+              border: 1px solid var(--border);
+              margin: 20px 0;
+            "
+          >
+            <span style="color: #569cd6">route</span>
+            <span style="color: #ce9178">"/predecir"</span> =>
+            <span style="color: #ce9178">"POST"</span>:<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6">var</span>
+            datos: <span style="color: #4ec9b0">tensor</span> = body.datos<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6">var</span>
+            modelo_id = body.modelo_id
+            <span style="color: #dcdcaa; font-weight: bold">~></span>
+            <span style="color: #b5cea8">1</span><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6">var</span> res
+            = ia.predict(datos, modelo_id)<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6">return</span>
+            <span style="color: #dcdcaa">jsonify</span>({resultado: res, ok:
+            <span style="color: #569cd6">true</span>})<br />
+            <span style="color: #569cd6">end</span><br /><br />
+            <span style="color: #dcdcaa">serve</span>(<span
+              style="color: #b5cea8"
+              >8080</span
+            >)
+          </div>
+
+          <h2>4. El Objeto `math` para Preprocesado</h2>
+          <p>
+            Antes de alimentar datos a un modelo, es común normalizar o
+            transformar valores. Iridium expone el objeto global
+            <code>math</code> con las funciones más usadas en pipelines de
+            datos:
+          </p>
+
+          <div
+            style="
+              background: #1e1e1e;
+              color: white;
+              padding: 20px;
+              border-radius: 12px;
+              font-family: &quot;Consolas&quot;, monospace;
+              border: 1px solid var(--border);
+              margin: 20px 0;
+            "
+          >
+            <span style="color: #569cd6">var</span> raiz = math.sqrt(<span
+              style="color: #b5cea8"
+              >144</span
+            >) <span style="color: #6a9955">// → 12.0</span><br />
+            <span style="color: #569cd6">var</span> potencia = math.pow(<span
+              style="color: #b5cea8"
+              >2</span
+            >, <span style="color: #b5cea8">10</span>)
+            <span style="color: #6a9955">// → 1024.0</span><br />
+            <span style="color: #569cd6">var</span> inferior = math.floor(<span
+              style="color: #b5cea8"
+              >3.9</span
+            >) <span style="color: #6a9955">// → 3</span><br />
+            <span style="color: #569cd6">var</span> superior = math.ceil(<span
+              style="color: #b5cea8"
+              >3.1</span
+            >) <span style="color: #6a9955">// → 4</span><br />
+            <span style="color: #569cd6">var</span> pi_val = math.pi
+            <span style="color: #6a9955">// → 3.14159...</span>
+          </div>
+
+          <div
+            style="
+              margin-top: 40px;
+              padding: 20px;
+              background: rgba(33, 150, 243, 0.1);
+              border-radius: 12px;
+              border: 1px solid #2196f3;
+            "
+          >
+            <h4 style="margin-top: 0; color: #2196f3">
+              <i class="fa-solid fa-brain"></i> Roadmap: Modelos Personalizados
+            </h4>
+            <p style="margin: 0; font-size: 0.9em">
+              En la V2 de Iridium, el objeto <code>ia</code> permitirá cargar
+              modelos desde archivos <code>.irimodel</code> propios. La V3
+              incluirá entrenamiento distribuido directamente desde el lenguaje,
+              sin depender de frameworks externos.
+            </p>
+          </div>
+
+          <div
+            style="
+              margin-top: 50px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <a
+              href="docs-tensores.html"
+              style="text-decoration: none; color: var(--primary)"
+              ><i class="fa-solid fa-arrow-left"></i> Anterior: Tensores y
+              Matrices</a
+            >
+            <a
+              href="docs-optimizacion.html"
+              style="
+                text-decoration: none;
+                color: var(--primary);
+                font-weight: bold;
+              "
+              >Siguiente: Optimización Backend
+              <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>&copy; 2026 Iridium Language Project | Designed by zxkiidev</footer>
+  </body>
+</html>

@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Errores Comunes | Documentación Iridium</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <strong><a href="../index.html">IRIDIUM</a></strong>
+      </div>
+      <div class="menu">
+        <a href="../docs.html">Docs</a>
+        <a href="../downloads.html">Downloads</a>
+        <a href="https://github.com/zxkiidev/Iridium-Language" target="_blank"
+          >GitHub</a
+        >
+        <a href="../extension.html" class="btn-nav-primary"
+          ><i class="fab fa-microsoft"></i> VS Code Extension</a
+        >
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside>
+        <div class="side-group">
+          <h4>🟢 El Despegue</h4>
+          <a href="docs-manifiesto.html" class="side-item"
+            >Manifiesto Iridium</a
+          >
+          <a href="docs-instalacion.html" class="side-item"
+            >Instalación Avanzada</a
+          >
+          <a href="docs-hola-mundo.html" class="side-item">Hola Mundo</a>
+          <a href="docs-tipado.html" class="side-item">Tipado Híbrido</a>
+          <a href="docs-io.html" class="side-item">Entrada y Salida (I/O)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🟡 Lógica de Servidor</h4>
+          <a href="docs-sponge.html" class="side-item">Operador Sponge (~>)</a>
+          <a href="docs-colecciones.html" class="side-item">Colecciones</a>
+          <a href="docs-flujo.html" class="side-item">Control de Flujo</a>
+          <a href="docs-memoria.html" class="side-item">Gestión de Memoria</a>
+          <a href="docs-seguridad.html" class="side-item">Seguridad (Secure)</a>
+        </div>
+
+        <div class="side-group">
+          <h4>🔴 Núcleo e IA</h4>
+          <a href="docs-red.html" class="side-item">Manejo de Red</a>
+          <a href="docs-db.html" class="side-item">Bases de Datos</a>
+          <a href="docs-tensores.html" class="side-item">Tensores y Matrices</a>
+          <a href="docs-ia-nativa.html" class="side-item">Integración con IA</a>
+          <a href="docs-optimizacion.html" class="side-item"
+            >Optimización Backend</a
+          >
+        </div>
+
+        <div class="side-group">
+          <h4>📚 Referencia Libs</h4>
+          <a href="lib-math-b.html" class="side-item">Lib-Math (Básico)</a>
+          <a href="lib-math-a.html" class="side-item">Lib-Math (Avanzado)</a>
+          <a href="lib-time.html" class="side-item">Lib-Time</a>
+          <a href="lib-network.html" class="side-item">Lib-Network</a>
+        </div>
+
+        <div class="side-group">
+          <h4>⚙️ Ecosistema</h4>
+          <a href="docs-extension.html" class="side-item">Uso de VS Code</a>
+          <a href="docs-errores.html" class="side-item active-item"
+            >Errores Comunes</a
+          >
+          <a href="docs-roadmap.html" class="side-item">Roadmap (V2 y V3)</a>
+          <a href="docs-glosario.html" class="side-item">Glosario Técnico</a>
+        </div>
+      </aside>
+
+      <main>
+        <section class="doc-section">
+          <span
+            style="
+              color: var(--primary);
+              font-weight: bold;
+              text-transform: uppercase;
+              font-size: 0.8em;
+            "
+            >Ecosistema: Archivo 2</span
+          >
+          <h1>Errores Comunes y Soluciones</h1>
+
+          <p>
+            Esta página recoge los errores más frecuentes al desarrollar con
+            Iridium, sus causas y cómo resolverlos. Los errores del motor
+            siempre tienen el prefijo <code>Ir-Error</code> para distinguirlos
+            de errores del sistema operativo.
+          </p>
+
+          <hr style="border: 0.5px solid var(--border); margin: 30px 0" />
+
+          <!-- ERROR 1 -->
+          <div
+            style="
+              margin: 25px 0;
+              padding: 20px;
+              background: var(--card-bg);
+              border-radius: 12px;
+              border: 1px solid var(--border);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+              "
+            >
+              <span
+                style="
+                  background: rgba(244, 67, 54, 0.15);
+                  color: #f44336;
+                  padding: 4px 10px;
+                  border-radius: 20px;
+                  font-family: monospace;
+                  font-size: 0.85em;
+                  font-weight: bold;
+                "
+                >Ir-Error: Inmutable violation</span
+              >
+            </div>
+            <p style="margin: 0 0 10px 0; font-size: 0.95em">
+              <strong>Causa:</strong> Intentaste reasignar una variable
+              declarada con <code>const</code>.
+            </p>
+            <div
+              style="
+                background: #1e1e1e;
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
+                font-family: &quot;Consolas&quot;, monospace;
+                font-size: 0.9em;
+              "
+            >
+              <span style="color: #569cd6">const</span> TASA =
+              <span style="color: #b5cea8">0.01</span><br />
+              TASA = <span style="color: #b5cea8">0.02</span>
+              <span style="color: #f44336"
+                >// ← Error fatal: constante protegida</span
+              >
+            </div>
+            <p
+              style="
+                margin: 10px 0 0 0;
+                font-size: 0.9em;
+                color: var(--text-secondary);
+              "
+            >
+              ✅ <strong>Solución:</strong> Usa <code>var</code> si el valor
+              debe cambiar, o mantén la constante si es un hiperparámetro fijo
+              del sistema.
+            </p>
+          </div>
+
+          <!-- ERROR 2 -->
+          <div
+            style="
+              margin: 25px 0;
+              padding: 20px;
+              background: var(--card-bg);
+              border-radius: 12px;
+              border: 1px solid var(--border);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+              "
+            >
+              <span
+                style="
+                  background: rgba(244, 67, 54, 0.15);
+                  color: #f44336;
+                  padding: 4px 10px;
+                  border-radius: 20px;
+                  font-family: monospace;
+                  font-size: 0.85em;
+                  font-weight: bold;
+                "
+                >Ir-Error: Archivo no encontrado</span
+              >
+            </div>
+            <p style="margin: 0 0 10px 0; font-size: 0.95em">
+              <strong>Causa:</strong> El motor no puede localizar el archivo
+              <code>.iri</code> o el <code>.env</code>.
+            </p>
+            <div
+              style="
+                background: #1e1e1e;
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
+                font-family: &quot;Consolas&quot;, monospace;
+                font-size: 0.9em;
+                color: #f44336;
+              "
+            >
+              [Ir-Error] Archivo no encontrado: main.iri
+            </div>
+            <p
+              style="
+                margin: 10px 0 0 0;
+                font-size: 0.9em;
+                color: var(--text-secondary);
+              "
+            >
+              ✅ <strong>Solución:</strong> Asegúrate de ejecutar
+              <code>iridium main.iri</code> desde el directorio donde está el
+              archivo. Para el <code>.env</code>, debe estar en la misma carpeta
+              que tu script.
+            </p>
+          </div>
+
+          <!-- ERROR 3 -->
+          <div
+            style="
+              margin: 25px 0;
+              padding: 20px;
+              background: var(--card-bg);
+              border-radius: 12px;
+              border: 1px solid var(--border);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+              "
+            >
+              <span
+                style="
+                  background: rgba(244, 67, 54, 0.15);
+                  color: #f44336;
+                  padding: 4px 10px;
+                  border-radius: 20px;
+                  font-family: monospace;
+                  font-size: 0.85em;
+                  font-weight: bold;
+                "
+                >[DB] Llamá db.config() o db.sqlite() primero</span
+              >
+            </div>
+            <p style="margin: 0 0 10px 0; font-size: 0.95em">
+              <strong>Causa:</strong> Se intentó ejecutar una consulta antes de
+              configurar la base de datos.
+            </p>
+            <div
+              style="
+                background: #1e1e1e;
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
+                font-family: &quot;Consolas&quot;, monospace;
+                font-size: 0.9em;
+              "
+            >
+              <span style="color: #f44336">// ❌ Sin configurar primero</span
+              ><br />
+              <span style="color: #569cd6">var</span> filas = db.query(<span
+                style="color: #ce9178"
+                >"SELECT * FROM users"</span
+              >)
+            </div>
+            <p
+              style="
+                margin: 10px 0 0 0;
+                font-size: 0.9em;
+                color: var(--text-secondary);
+              "
+            >
+              ✅ <strong>Solución:</strong> Llama a
+              <code>db.config("host", "user", "pass", "db")</code> para MySQL o
+              a <code>db.sqlite("archivo.db")</code> al inicio del script, antes
+              de cualquier consulta.
+            </p>
+          </div>
+
+          <!-- ERROR 4 -->
+          <div
+            style="
+              margin: 25px 0;
+              padding: 20px;
+              background: var(--card-bg);
+              border-radius: 12px;
+              border: 1px solid var(--border);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+              "
+            >
+              <span
+                style="
+                  background: rgba(255, 193, 7, 0.15);
+                  color: #ffc107;
+                  padding: 4px 10px;
+                  border-radius: 20px;
+                  font-family: monospace;
+                  font-size: 0.85em;
+                  font-weight: bold;
+                "
+                >iridium no se reconoce como un comando</span
+              >
+            </div>
+            <p style="margin: 0 0 10px 0; font-size: 0.95em">
+              <strong>Causa:</strong> El PATH del sistema no fue actualizado
+              tras la instalación, o la terminal no fue reiniciada.
+            </p>
+            <p
+              style="margin: 0; font-size: 0.9em; color: var(--text-secondary)"
+            >
+              ✅ <strong>Solución:</strong> Cierra y vuelve a abrir la terminal
+              (CMD / PowerShell). Si persiste, verifica manualmente que
+              <code>C:\Program Files\Iridium</code> esté en tus variables de
+              entorno del sistema.
+            </p>
+          </div>
+
+          <!-- ERROR 5 -->
+          <div
+            style="
+              margin: 25px 0;
+              padding: 20px;
+              background: var(--card-bg);
+              border-radius: 12px;
+              border: 1px solid var(--border);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+              "
+            >
+              <span
+                style="
+                  background: rgba(244, 67, 54, 0.15);
+                  color: #f44336;
+                  padding: 4px 10px;
+                  border-radius: 20px;
+                  font-family: monospace;
+                  font-size: 0.85em;
+                  font-weight: bold;
+                "
+                >Ruta no encontrada: GET /ruta</span
+              >
+            </div>
+            <p style="margin: 0 0 10px 0; font-size: 0.95em">
+              <strong>Causa:</strong> Se hizo una petición HTTP a una ruta que
+              no fue definida con <code>route</code>, o se usó el método HTTP
+              incorrecto.
+            </p>
+            <div
+              style="
+                background: #1e1e1e;
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
+                font-family: &quot;Consolas&quot;, monospace;
+                font-size: 0.9em;
+              "
+            >
+              <span style="color: #6a9955"
+                >// Definida como POST, pero se llama con GET</span
+              ><br />
+              <span style="color: #569cd6">route</span>
+              <span style="color: #ce9178">"/datos"</span> =>
+              <span style="color: #ce9178">"POST"</span>:<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;...<br />
+              <span style="color: #569cd6">end</span>
+            </div>
+            <p
+              style="
+                margin: 10px 0 0 0;
+                font-size: 0.9em;
+                color: var(--text-secondary);
+              "
+            >
+              ✅ <strong>Solución:</strong> Verifica que el método HTTP del
+              cliente coincida con el declarado en el <code>route</code>. Puedes
+              aceptar múltiples métodos separando con coma:
+              <code>=> "GET", "POST"</code>.
+            </p>
+          </div>
+
+          <!-- ERROR 6 -->
+          <div
+            style="
+              margin: 25px 0;
+              padding: 20px;
+              background: var(--card-bg);
+              border-radius: 12px;
+              border: 1px solid var(--border);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+              "
+            >
+              <span
+                style="
+                  background: rgba(255, 193, 7, 0.15);
+                  color: #ffc107;
+                  padding: 4px 10px;
+                  border-radius: 20px;
+                  font-family: monospace;
+                  font-size: 0.85em;
+                  font-weight: bold;
+                "
+                >Variable muestra {Indefinido} en out</span
+              >
+            </div>
+            <p style="margin: 0 0 10px 0; font-size: 0.95em">
+              <strong>Causa:</strong> Se intentó interpolar una variable en
+              <code>out</code> que no estaba definida en ese scope, o cuyo
+              nombre tiene un error tipográfico.
+            </p>
+            <div
+              style="
+                background: #1e1e1e;
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
+                font-family: &quot;Consolas&quot;, monospace;
+                font-size: 0.9em;
+              "
+            >
+              <span style="color: #569cd6">var</span> nombre =
+              <span style="color: #ce9178">"Iridium"</span><br />
+              <span style="color: #569cd6">out</span>
+              <span style="color: #ce9178">"Hola {nombe}"</span>
+              <span style="color: #f44336">// ← typo: 'nombe' no existe</span>
+            </div>
+            <p
+              style="
+                margin: 10px 0 0 0;
+                font-size: 0.9em;
+                color: var(--text-secondary);
+              "
+            >
+              ✅ <strong>Solución:</strong> Verifica la ortografía exacta del
+              nombre de la variable. Usa la extensión de VS Code para resaltar
+              variables no declaradas.
+            </p>
+          </div>
+
+          <div
+            style="
+              margin-top: 40px;
+              padding: 20px;
+              background: rgba(33, 150, 243, 0.1);
+              border-radius: 12px;
+              border: 1px solid #2196f3;
+            "
+          >
+            <h4 style="margin-top: 0; color: #2196f3">
+              <i class="fa-solid fa-circle-info"></i> ¿Encontraste un error
+              nuevo?
+            </h4>
+            <p style="margin: 0; font-size: 0.9em">
+              Abre un <strong>Issue</strong> en el repositorio oficial de GitHub
+              describiendo el error, el código que lo reproduce y el mensaje
+              exacto del motor. La comunidad y el equipo de Iridium responden
+              activamente.
+            </p>
+          </div>
+
+          <div
+            style="
+              margin-top: 50px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <a
+              href="docs-extension.html"
+              style="text-decoration: none; color: var(--primary)"
+              ><i class="fa-solid fa-arrow-left"></i> Anterior: Uso de VS
+              Code</a
+            >
+            <a
+              href="docs-roadmap.html"
+              style="
+                text-decoration: none;
+                color: var(--primary);
+                font-weight: bold;
+              "
+              >Siguiente: Roadmap <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>&copy; 2026 Iridium Language Project | Designed by zxkiidev</footer>
+  </body>
+</html>
